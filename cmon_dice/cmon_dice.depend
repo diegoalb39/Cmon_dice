@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1728470647 source:c:\users\user\documents\github\cmon_dice\listadinamica\lista.c
+	"lista.h"
+
+1728472237 c:\users\user\documents\github\cmon_dice\listadinamica\lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1728473327 source:c:\users\user\documents\github\cmon_dice\cmon_dice\funciones.c
+	"funciones.h"
+
+1728473139 c:\users\user\documents\github\cmon_dice\cmon_dice\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	"../listaDinamica/lista.h"
+
+1728473160 source:c:\users\user\documents\github\cmon_dice\cmon_dice\main.c
+	"../listaDinamica/lista.h"
+	"funciones.h"
+
