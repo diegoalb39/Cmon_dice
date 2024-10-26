@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1725488235 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.c
+	"colaDinamica.h"
+
+1729845498 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.h
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+
+1729585306 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.c
+
+1728253963 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.c
+	"listaDinamica.h"
+
+1728253859 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.h
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+
+1729585121 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\main.c
+	<stdio.h>
+	<stdlib.h>
+

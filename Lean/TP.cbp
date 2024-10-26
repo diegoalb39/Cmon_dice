@@ -31,8 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../Material TP/funcionescurl.h">
-			<Option target="&lt;{~None~}&gt;" />
+		<Unit filename="TP.c">
+			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="TP.h" />
 		<Unit filename="main.c">

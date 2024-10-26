@@ -31,6 +31,22 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="colaDinamica/colaDinamica.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="colaDinamica/colaDinamica.h" />
+		<Unit filename="curl/TP.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="curl/TP.h" />
+		<Unit filename="funciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funciones.h" />
+		<Unit filename="listaDinamica/listaDinamica.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="listaDinamica/listaDinamica.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
