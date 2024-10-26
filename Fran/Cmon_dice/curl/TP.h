@@ -24,12 +24,10 @@
 
 ////Constantes que determinan elementos del juego
 //MAX_LINE_CANT_SECUENCIA determina el largo a agregar a la cadena de la URL para contener las lineas mas abajo
-#define MAX_LINE_CANT_SECUENCIA 2
-//Constantes que determinan una linea describiendo la cantidad de numeros a pedir a la API segun la dificultad y que seran
-//concatenadas para conformar la URL
-#define CANT_SECUENCIA_FACIL "4"
-#define CANT_SECUENCIA_NORMAL "6"
-#define CANT_SECUENCIA_DIFICIL "8"
+#define MAX_LINE_CANT_SECUENCIA 3
+//Constante que determina una linea describiendo la cantidad de numeros a pedir a la API y que sera
+//concatenada para conformar la URL
+#define CANT_SECUENCIA "10"
 
 //Constantes generales
 #define NO_MEMORY 0
@@ -53,9 +51,11 @@ typedef struct
 
 size_t solicitar_numeros(void*, size_t, size_t, void*);
 
-int armado_url(char**, int);
-int config_curl(CURL**, char*, t_contenedor*);
-int ejecutar_curl(CURL**, t_contenedor*);
-int funcion_general(int);
+int armado_url(char**);
+void config_curl(CURL**, char*, t_contenedor*);
+int obtener_secuencia(CURL**, t_contenedor*);
+int juego_princicipal();
+
+//int funcion_general(int);
 
 #endif // TP_H_INCLUDED

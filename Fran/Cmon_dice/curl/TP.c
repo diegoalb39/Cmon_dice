@@ -55,29 +55,20 @@ size_t solicitar_numeros(void*paquete, size_t tamdato, size_t tampaquete, void *
     return tampaquete;
 }
 
-int armado_url(char**URL, int dificultad)
+int armado_url(char**URL)
 {
     *URL = (char*)malloc( strlen(DATOS_URL_START) + strlen(DATOS_URL_END) + MAX_LINE_CANT_SECUENCIA );
     if(!(*URL))
         return NO_MEMORY;
 
     strcpy(*URL, DATOS_URL_START);
-
-    switch(dificultad)
-    {
-        case 1: strcat(*URL, CANT_SECUENCIA_FACIL);
-                break;
-        case 2: strcat(*URL, CANT_SECUENCIA_NORMAL);
-                break;
-        case 3: strcat(*URL, CANT_SECUENCIA_DIFICIL);
-    }
-
+    strcat(*URL, CANT_SECUENCIA);
     strcat(*URL, DATOS_URL_END);
 
     return ALL_OK;
 }
 
-int config_curl(CURL**curl, char*URL, t_contenedor*contenedor)
+void config_curl(CURL**curl, char*URL, t_contenedor*contenedor)
 {
     //Establecimiento de URL de la solicitud GET
     curl_easy_setopt(*curl, CURLOPT_URL, URL);
@@ -93,11 +84,9 @@ int config_curl(CURL**curl, char*URL, t_contenedor*contenedor)
 
     //Establecimiento de variable donde se colocaran los datos recibidos en el paquete
     curl_easy_setopt(*curl, CURLOPT_WRITEDATA, contenedor);
-
-    return ALL_OK;
 }
 
-int ejecutar_curl(CURL**curl, t_contenedor*contenedor)
+int obtener_secuencia(CURL**curl, t_contenedor*contenedor)
 {
     CURLcode respuesta;//variable que almacena el codigo de retorno de ejecucion de easy_curl_perform
     char *pl, error, clave[] = "Error:";
@@ -120,8 +109,10 @@ int ejecutar_curl(CURL**curl, t_contenedor*contenedor)
         }
         else if(pl)
         {
-            printf("//Error en servidor.//\n");
+            puts("//Error en servidor.//");
             error = 'Y';
+            free(contenedor->cadena_datos);
+            contenedor->tamcontenido = 0;
         }
 
         if('Y' == error)//en caso de error...
@@ -133,6 +124,53 @@ int ejecutar_curl(CURL**curl, t_contenedor*contenedor)
     return ALL_OK;
 }
 
+int juego_princicipal()
+{
+    t_contenedor secuencia;
+    CURL*curl;//puntero al handle creado
+    char*URL;
+
+    ////Inicializacion de manejo de curl//Dependiendo el diseño del resto del programa, esto podria terminar afuera.
+    curl_global_init(CURL_GLOBAL_DEFAULT);//prepara el area de trabajo para ejecutar funciones curl
+    curl = curl_easy_init();//crea un handle/usuario para la transmision de datos
+
+    if(!curl)
+        return ERROR;
+
+    if( !armado_url(&URL) )
+        return NO_MEMORY;
+
+    printf("-URL: %s\n\n", URL);//linea de prueba
+
+    config_curl(&curl, URL, &secuencia);
+
+    secuencia.tamcontenido = 0;
+    obtener_secuencia(&curl, &secuencia);
+    ////en ejecucion tendria esta forma
+    //while( haya jugadores que falten jugar )
+    //{
+    ////secuencia.tamcontenido = 0;
+
+    ////obtener_secuencia(&curl, &secuencia);
+
+    ////funcion de juego
+
+    ////free( secuencia.cadena_datos );
+    //}
+
+    ////Cierre de operaciones de curl//Dependiendo el diseño del resto del programa, esto podria terminar afuera.
+    curl_easy_cleanup(curl);//cierra y libera todo lo asociado al handle previamente creado
+    curl_global_cleanup();//libera todos los recursos adquiridos por curl_global_inint
+
+    printf("-Secuencia obtenida:\n%s", secuencia.cadena_datos);//linea de prueba
+
+    free(URL);
+    free( secuencia.cadena_datos );
+
+    return 1;
+}
+
+/*
 int funcion_general(int dificultad)
 {
     CURL*curl;//puntero al handle creado
@@ -167,3 +205,4 @@ int funcion_general(int dificultad)
 
     return ALL_OK;
 }
+*/
