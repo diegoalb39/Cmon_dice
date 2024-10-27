@@ -30,7 +30,7 @@ typedef struct
     t_nodo *cursor;
 }t_lista_it; //lista iteradora
 
-typedef t_nodo* lista;
+//typedef t_nodo* lista;
 
 void crearCola(t_cola *pc);
 void vaciarCola(t_cola *pc);

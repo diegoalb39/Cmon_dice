@@ -139,3 +139,15 @@ void desordenarlista(t_lista*lista_a, int cant)
 
     vaciarlista(&lista_b);
 }
+
+
+//agregado
+void recorrerlista_d(t_lista* pl, void(*accion)(void* e, void* p, void* pf, void* pl, Cmp cmp),
+                     Cmp cmp, void* p, void* pf, void* pc)
+{
+    while(*pl)
+    {
+        accion((*pl)->dato, accion, cmp, pf, pc);
+        pl = &(*pl)->sig;
+    }
+}

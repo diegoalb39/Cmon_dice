@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../listaDinamica/lista.h"
+#include "desordenar_lista.h"
 
 #define MSJ_MENU_INICIAL "///CMON DICE///\n\n[A] Jugar\n[B] Salir\n\nIngrese opcion: "
 #define LI_MENU_INICIAL 'A'
@@ -31,14 +32,19 @@ typedef struct
 }t_jugador;
 
 
+
 int menu(const char *msj, int li, int ls);
 void wrapper_menuInicial();
 int jugar();
 
-void generarSetupJuego();
-void iniciar_juego();
-void mostrar_informe();
-void generar_informe_txt();
+//void generarSetupJuego();
+//void iniciar_juego();
+//void mostrar_informe();
+//void generar_informe_txt();
+void mostrar_y_generar_informe(t_lista* pl, void(*accion)(void* e, void* p, void* pf, void* pc, Cmp cmp));
+void accionCmpYMostrar(void* e, void* p, void* pf, void* pc, Cmp cmp);
+int cmp_puntaje(const void* a, const void* b);
+
 
 
 

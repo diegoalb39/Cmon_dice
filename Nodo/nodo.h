@@ -8,4 +8,7 @@ typedef struct s_nodo
     struct s_nodo *sig;
 }t_nodo;
 
+typedef int(*Cmp)(const void* a, const void* b);
+
+
 #endif // NODO_H_INCLUDED

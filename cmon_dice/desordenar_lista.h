@@ -33,4 +33,7 @@ void mezclaryunirlistas(t_lista*, t_lista*);
 
 void desordenarlista(t_lista*, int);
 
+///agregado
+void recorrerlista_d(t_lista* pl, void(*accion)(void* e, void* p, void* pf, void* pl, Cmp cmp),
+                     Cmp cmp, void* p, void* pf, void* pc);
 #endif // DESORDENAR_LISTA_H_INCLUDED
