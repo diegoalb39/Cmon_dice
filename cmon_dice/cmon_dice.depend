@@ -19,3 +19,25 @@
 	"../listaDinamica/lista.h"
 	"funciones.h"
 
+1730051746 source:c:\users\cosme fulanito\documents\github\cmon_dice\listadinamica\lista.c
+	"lista.h"
+
+1730051746 c:\users\cosme fulanito\documents\github\cmon_dice\listadinamica\lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1730062095 source:c:\users\cosme fulanito\documents\github\cmon_dice\cmon_dice\funciones.c
+	"funciones.h"
+
+1730062031 c:\users\cosme fulanito\documents\github\cmon_dice\cmon_dice\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"../listaDinamica/lista.h"
+
+1730062055 source:c:\users\cosme fulanito\documents\github\cmon_dice\cmon_dice\main.c
+	"../listaDinamica/lista.h"
+	"funciones.h"
+

@@ -2,6 +2,12 @@
 #define FUNCIONES_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <time.h>
+
+#define MAX_VIDAS 5
+#define TAM_INPUT 100
+#define TIEMPO_LIMITE 20
 #include "../listaDinamica/lista.h"
 
 #define MSJ_MENU_INICIAL "///CMON DICE///\n\n[A] Jugar\n[B] Salir\n\nIngrese opcion: "
@@ -29,6 +35,13 @@ typedef struct
     unsigned puntaje_total;
     t_cola rounds;
 }t_jugador;
+
+typedef struct
+{
+    char*cadena_datos;
+    unsigned tamcontenido;
+
+}t_contenedor;
 
 
 int menu(const char *msj, int li, int ls);

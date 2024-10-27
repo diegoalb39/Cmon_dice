@@ -3,6 +3,6 @@
 
 int main()
 {
-
+    testVidasYTiempo();
     return 0;
 }
