@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../listaDinamica/lista.h" />
+		<Unit filename="TP.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="TP.h" />
 		<Unit filename="funciones.c">
 			<Option compilerVar="CC" />
 		</Unit>

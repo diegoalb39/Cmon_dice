@@ -26,7 +26,7 @@ void wrapper_menuInicial()
 
 int jugar()
 {
-
+    return 0;
 }
 
 
