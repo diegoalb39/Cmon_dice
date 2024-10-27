@@ -13,9 +13,7 @@ int main()
     if(leerConf(NOM_ARCH_CONF, &conf)!= TODO_OK)
         return 1;
     desordenarLista(&jugadores, cantJres);
-
-    mostrarJugadores(&jugadores); //ESTAS LINEAS SON DE PRUEBA
-    mostrarConf(conf);
+    mostrarInfoPartida(&jugadores, &conf, cantJres);
     printf("\n");
     vaciarLista(&jugadores);
 }

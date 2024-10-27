@@ -78,7 +78,7 @@ int ingresoJugadores(t_lista* jugadores)
             system("pause");
             system("cls");
             mostrarJugadores(jugadores);
-            printf("\u00a8Desea ingresar otro jugador? Y/N\n");
+            printf("\u00a8Desea ingresar otro jugador? [Y/N]\n");
             fflush(stdin);
             scanf("%c", &opc);
         }
@@ -139,5 +139,85 @@ int leerConf(const char* archConf, t_conf* varConf)
     }
 
     fclose(pf);
+    return TODO_OK;
+}
+
+int mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres)
+{
+    int opc, cantAdc;
+    char resp;
+
+    do{
+        mostrarJugadores(jugadores);
+        printf("Se jugara segun el orden de la lista de jugadores\n");
+        printf("\nLa configuracion seleccionada para la partida fue la siguiente:\n\n");
+        mostrarConf(*conf);
+
+        printf("\n\n\u00a8Esta listo para comenzar la partida? [Y/N]\n");
+        fflush(stdin);
+        scanf("%c", &resp);
+        if(resp != 'Y' && resp != 'N' && resp != 'y' && resp != 'n')
+        {
+            printf("\nOpcion invalida\n\n");
+            system("pause");
+            system("cls");
+        }
+    }while(resp != 'Y' && resp != 'N' && resp != 'y' && resp != 'n');
+
+    while(resp == 'N' || resp == 'n')
+    {
+        system("cls");
+        do{
+            printf("\u00a8Que accion desea realizar antes de comenzar?\n\n"
+                   "1 - Agregar jugadores\n"
+                   "2 - Cambiar la dificultad\n"
+                   "3 - Comenzar\n"
+                   "4 - Salir\n\n");
+            fflush(stdin);
+            scanf("%d", &opc);
+            if(opc<1 || opc>4)
+            {
+                printf("\nOpcion invalida\n\n");
+                system("pause");
+                system("cls");
+            }
+        }while(opc<1 || opc>4);
+
+        system("cls");
+        switch(opc)
+        {
+            case 1: cantAdc = ingresoJugadores(jugadores);
+                    if(cantAdc == ERROR_MEM)
+                        return ERROR_MEM;
+                    cantJres+= cantAdc;
+                    desordenarLista(jugadores, cantJres);
+                    break;
+            case 2: if(leerConf(NOM_ARCH_CONF, conf) != TODO_OK)
+                        return ERROR_ARCH;
+                    break;
+            case 3: return TODO_OK;
+                    break;
+            case 4: return SALIR;
+        }
+
+        system("cls");
+        do{
+            mostrarJugadores(jugadores);
+            printf("Se jugara segun el orden de la lista de jugadores\n");
+            printf("\nLa configuracion seleccionada para la partida fue la siguiente:\n\n");
+            mostrarConf(*conf);
+
+            printf("\n\n\u00a8Esta listo para comenzar la partida? [Y/N]\n");
+            fflush(stdin);
+            scanf("%c", &resp);
+            if(resp != 'Y' && resp != 'N' && resp != 'y' && resp != 'n')
+            {
+                printf("\nOpcion invalida\n\n");
+                system("pause");
+                system("cls");
+            }
+        }while(resp != 'Y' && resp != 'N' && resp != 'y' && resp != 'n');
+    }
+
     return TODO_OK;
 }

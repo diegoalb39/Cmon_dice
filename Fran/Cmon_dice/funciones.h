@@ -20,6 +20,7 @@
 
 #define ERROR_MEM -1
 #define ERROR_ARCH 1
+#define SALIR 1
 
 typedef struct
 {
@@ -49,8 +50,9 @@ int ingresoJugadores(t_lista* jugadores);
 void mostrarJugadores(t_lista* jugadores);
 //lectura de conf segun dificultad elegida -> despues de esto usar desordenarLista
 int leerConf(const char* archConf, t_conf* varConf);
-void mostrarConf(t_conf conf);
 //mostrar orden jugadores, conf, teclas y preguntar si esta listo para empezar
+int mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres);
+void mostrarConf(t_conf conf);
 //jugar -> usa biblioteca time y curl, conio usa colores, investigar sonidos y displays
 //generar archivo informe
 
