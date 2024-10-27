@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="TP.h" />
+		<Unit filename="desordenar_lista.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="desordenar_lista.h" />
 		<Unit filename="funciones.c">
 			<Option compilerVar="CC" />
 		</Unit>
