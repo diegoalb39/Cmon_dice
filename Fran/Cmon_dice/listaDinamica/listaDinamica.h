@@ -30,7 +30,7 @@ typedef void (*Accion)(const void* e);
 
 void crearLista(t_lista* pl);
 int insertarAlFinal(t_lista* pl, const void* dato, unsigned tam);
-int insertarOrdenado(t_lista* pl, const void* dato, unsigned tam, Cmp funCmp, int sinDup, Accion dup);
+int insertarOrdenado(t_lista* pl, const void* dato, unsigned tam, Cmp funCmp, int sinDup);
 int sacarDeLista(t_lista* pl,void* clave, unsigned tam, Cmp funCmp, Accion accion);
 int sacarDeListaOrd(t_lista* pl, void* clave, unsigned tam, Cmp funCmp);
 void recorrerLista(t_lista* pl, Accion accion);

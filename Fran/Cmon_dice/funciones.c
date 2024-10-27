@@ -5,11 +5,6 @@ int cmpNombre(const void *e1, const void *e2)
     return strcmpi((char*)e1,(char*)e2);
 }
 
-void errDup(const void *e)
-{
-    printf("El jugador %s ya habia sido ingresado", (char*)e);
-}
-
 void mostrarJug(const void *e)
 {
     printf("%s\n", ((t_jugador*)e)->nombre);
@@ -37,6 +32,7 @@ int ingresoJugadores(t_lista* jugadores)
 {
     t_jugador jugador;
     char opc, *auxChar;
+    int ret;
 
     do{
         do{
@@ -59,8 +55,15 @@ int ingresoJugadores(t_lista* jugadores)
         jugador.puntTotal = 0;
         crearCola(&jugador.infoRounds);
 
-        if(insertarOrdenado(jugadores, &jugador, sizeof(jugador), cmpNombre, 1, errDup)==NO_MEM)
-           return ERROR_MEM;
+        ret= insertarOrdenado(jugadores, &jugador, sizeof(jugador), cmpNombre, 1);
+
+        if(ret == NO_MEM)
+            return ERROR_MEM;
+        if(ret == DUPLICADO)
+        {
+            printf("El jugador %s ya habia sido ingresado\n", jugador.nombre);
+            system("pause");
+        }
 
         printf("\n");
         system("cls");
