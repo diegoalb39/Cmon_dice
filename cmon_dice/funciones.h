@@ -35,7 +35,10 @@ int menu(const char *msj, int li, int ls);
 void wrapper_menuInicial();
 int jugar();
 
-
+void generarSetupJuego();
+void iniciar_juego();
+void mostrar_informe();
+void generar_informe_txt();
 
 
 

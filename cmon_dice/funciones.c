@@ -5,6 +5,7 @@ int menu(const char *msj, int li, int ls)
     char opc;
     int priVez = 1;
     do{
+        system("cls");//test
         printf("%s\n%s", priVez ? priVez = 0, "" : "-----OPCION INVALIDA-----", msj);
         fflush(stdin);
         scanf("%c", &opc);
@@ -26,6 +27,10 @@ void wrapper_menuInicial()
 
 int jugar()
 {
+    generarSetupJuego();
+    iniciar_juego();
+    mostrar_informe();
+    generar_informe_txt();
     return 0;
 }
 
