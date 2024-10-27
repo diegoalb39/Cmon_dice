@@ -18,7 +18,7 @@
 #define MAX_NOM 31
 #define CAMPOS_ARCH_CONF 4
 
-#define ERROR_MEM 1
+#define ERROR_MEM -1
 #define ERROR_ARCH 1
 
 typedef struct

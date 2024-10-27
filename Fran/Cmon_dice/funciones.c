@@ -32,7 +32,7 @@ int ingresoJugadores(t_lista* jugadores)
 {
     t_jugador jugador;
     char opc, *auxChar;
-    int ret;
+    int cant=0, ret;
 
     do{
         do{
@@ -52,6 +52,7 @@ int ingresoJugadores(t_lista* jugadores)
             }
         }while(*(jugador.nombre) == '\0');
 
+        cant++;
         jugador.puntTotal = 0;
         crearCola(&jugador.infoRounds);
 
@@ -84,7 +85,7 @@ int ingresoJugadores(t_lista* jugadores)
         system("cls");
     }while(opc == 'Y' || opc == 'y');
 
-    return TODO_OK;
+    return cant;
 }
 
 int leerConf(const char* archConf, t_conf* varConf)

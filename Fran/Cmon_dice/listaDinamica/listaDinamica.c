@@ -160,6 +160,74 @@ void vaciarLista(t_lista* pl)
     }
 }
 
+//PRIMITIVAS PARA DESORDENAR
+
+t_nodo* obtener_nodo_porpos(t_lista*lista, int pos)
+{
+    t_nodo*nodobuscado;
+
+    while( (*lista) && (0 != pos) )
+    {
+        lista = &(*lista)->sig;
+
+        pos--;
+    }
+
+    if(0 != pos)
+        nodobuscado = NULL;
+    else
+    {
+        nodobuscado = *lista;
+        *lista = NULL;
+    }
+
+    return nodobuscado;
+}
+
+void mezclaryunirlistas(t_lista*lista_a, t_lista*lista_b)
+{
+    t_nodo *aux, *aux_mov;
+    int num_lista;
+
+    aux = NULL;
+
+    srand(time(NULL));
+
+    while( (*lista_a) || (*lista_b) )
+    {
+        num_lista = (rand()%2);
+
+        if( ( ((*lista_a) && (*lista_b)) && !(num_lista) ) || ((*lista_a) && !(*lista_b)) )
+        {
+            aux_mov = *lista_a;
+            *lista_a = aux_mov->sig;
+        }
+        else
+        {
+            aux_mov = *lista_b;
+            *lista_b = aux_mov->sig;
+        }
+
+        aux_mov->sig = aux;
+        aux = aux_mov;
+    }
+
+    *lista_a = aux;
+}
+
+void desordenarLista(t_lista*lista_a, int cant)
+{
+    t_lista lista_b;
+    int pos;
+
+    pos = cant*0.5;
+
+    lista_b = obtener_nodo_porpos(lista_a, pos);
+
+    mezclaryunirlistas(lista_a, &lista_b);
+
+    vaciarLista(&lista_b);
+}
 //PRIMITVAS DE ITERADOR
 
 void crearIterador(t_lista_it* it)

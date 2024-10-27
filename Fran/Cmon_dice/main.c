@@ -4,12 +4,16 @@ int main()
 {
     t_lista jugadores;
     t_conf conf;
+    int cantJres;
 
     crearLista(&jugadores);
-    if(ingresoJugadores(&jugadores)!= TODO_OK)
+    cantJres = ingresoJugadores(&jugadores);
+    if(cantJres == ERROR_MEM)
         return 1;
     if(leerConf(NOM_ARCH_CONF, &conf)!= TODO_OK)
         return 1;
+    desordenarLista(&jugadores, cantJres);
+
     mostrarJugadores(&jugadores); //ESTAS LINEAS SON DE PRUEBA
     mostrarConf(conf);
     printf("\n");

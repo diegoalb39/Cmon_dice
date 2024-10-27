@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
+#include <time.h>
 #include "../nodo.h"
 
 #define minimo(a,b)((a)<(b)?(a):(b))
@@ -36,6 +37,11 @@ int sacarDeListaOrd(t_lista* pl, void* clave, unsigned tam, Cmp funCmp);
 void recorrerLista(t_lista* pl, Accion accion);
 int ordenarLista(t_lista* pl, Cmp funCmp);
 void vaciarLista(t_lista* pl);
+
+//PRIMITIVAS PARA DESORDENAR
+t_nodo* obtener_nodo_porpos(t_lista*, int);
+void mezclaryunirlistas(t_lista*, t_lista*);
+void desordenarLista(t_lista*, int);
 
 //PRIMITIVAS PARA ITERADOR DE LISTA
 void crearIterador(t_lista_it* it);
