@@ -5,14 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "../Nodo/nodo.h"
 
-typedef struct s_nodo
-{
-    unsigned tamdato;
-    void*dato;
-    struct s_nodo*sig;
-
-}t_nodo;
+//typedef struct s_nodo
+//{
+//    unsigned tamdato;
+//    void*dato;
+//    struct s_nodo*sig;
+//
+//}t_nodo;
 
 typedef t_nodo* t_lista;
 

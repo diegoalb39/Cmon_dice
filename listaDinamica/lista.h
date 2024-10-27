@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../Nodo/nodo.h"
 
 #define NO_MEMORY 0
 #define EMPTY 0
@@ -10,12 +11,12 @@
 
 #define MINIMO(x,y) ((x)<(y) ? (x) : (y))
 
-typedef struct s_nodo
-{
-    void *dato;
-    unsigned tam;
-    struct s_nodo *sig;
-}t_nodo;
+//typedef struct s_nodo
+//{
+//    void *dato;
+//    unsigned tam;
+//    struct s_nodo *sig;
+//}t_nodo;
 
 typedef struct
 {

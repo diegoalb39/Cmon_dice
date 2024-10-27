@@ -24,7 +24,7 @@ int ponerenlista_final(t_lista*lista, const void*dato, unsigned tamdato)
     }
 
     memcpy( (nodonue->dato), dato, tamdato );
-    nodonue->tamdato = tamdato;
+    nodonue->tam = tamdato;
     nodonue->sig = NULL;
 
     *lista = nodonue;
