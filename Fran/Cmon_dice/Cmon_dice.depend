@@ -1,23 +1,46 @@
 # depslib dependency file v1.0
-1725488235 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.c
+1729987122 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.c
 	"colaDinamica.h"
 
-1729845498 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.h
+1729987521 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.h
 	<stdio.h>
 	<stdlib.h>
 	<memory.h>
+	"../nodo.h"
 
-1729585306 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.c
+1729990163 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.c
+	"funciones.h"
 
-1728253963 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.c
+1729987766 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.c
 	"listaDinamica.h"
 
-1728253859 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.h
+1729987457 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.h
 	<stdio.h>
 	<stdlib.h>
 	<memory.h>
+	"../nodo.h"
 
-1729585121 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\main.c
+1729988429 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\main.c
+	"funciones.h"
+
+1729987122 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\curl\tp.c
+	"TP.h"
+
+1729987122 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\curl\tp.h
+	<curl/curl.h>
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	<windows.h>
+
+1729987706 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\nodo.h
+
+1729988429 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	"colaDinamica/colaDinamica.h"
+	"listaDinamica/listaDinamica.h"
+	"curl/TP.h"
 

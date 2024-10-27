@@ -29,7 +29,7 @@ int insertarAlFinal(t_lista* pl, const void* dato, unsigned tam)
     return TODO_OK;
 }
 
-int insertarOrdenado(t_lista* pl, const void* dato, unsigned tam, Cmp funCmp, int sinDup)
+int insertarOrdenado(t_lista* pl, const void* dato, unsigned tam, Cmp funCmp, int sinDup, Accion dup)
 {
     t_nodo* nue;
 
@@ -39,7 +39,10 @@ int insertarOrdenado(t_lista* pl, const void* dato, unsigned tam, Cmp funCmp, in
     }
 
     if(sinDup && *pl && funCmp((*pl)->info, dato)==0)
+    {
+        dup((*pl)->info);
         return DUPLICADO;
+    }
 
     nue= (t_nodo*) malloc(sizeof(t_nodo));
     if(!nue || (nue->info = malloc(tam)) == NULL)

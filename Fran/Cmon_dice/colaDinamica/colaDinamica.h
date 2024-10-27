@@ -4,19 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
+#include "../nodo.h"
 
 #define minimo(a,b)((a)<(b)?(a):(b))
 
 #define NO_MEM 1
 #define COLA_VACIA 1
 #define TODO_OK 0
-
-typedef struct s_nodo
-{
-    unsigned tam;
-    void* info;
-    struct s_nodo* sig;
-}t_nodo;
 
 typedef struct
 {
