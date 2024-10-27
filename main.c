@@ -2,19 +2,6 @@
 
 int main()
 {
-    /*
-    int i, cant;
-
-    cant = 7;
-
-    srand(time(NULL));
-
-    for(i = 0;i < cant;i++)
-        printf("%d ", (rand()%2));
-
-    printf("\n");
-    */
-
     t_lista lista_prueba;
     int i, vec_prueba[] = {1, 2, 3, 4, 5, 6, 7};
 
@@ -27,9 +14,9 @@ int main()
     recorrerlista(&lista_prueba, mostrar_int);
     printf("\n");
 
-    desordenarlista(&lista_prueba, ( sizeof(vec_prueba)/sizeof(vec_prueba[0]) ));
+    mezclar_jugadores(&lista_prueba, ( sizeof(vec_prueba)/sizeof(vec_prueba[0]) ));
 
-    printf("\n\n//lista a//\n");
+    printf("\n\n//lista mezclada//\n");
     recorrerlista(&lista_prueba, mostrar_int);
     printf("\n");
 

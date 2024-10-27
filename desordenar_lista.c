@@ -63,9 +63,11 @@ void vaciarlista(t_lista*lista)
 }
 
 ////
-t_nodo*obtener_nodo_porpos(t_lista*lista, int pos)
+t_nodo*crear_sublista_desdepos(t_lista*lista, int pos)
 {
-    t_nodo*nodobuscado;
+    t_nodo*nue_prinodo;
+
+    pos--;
 
     while( (*lista) && (0 != pos) )
     {
@@ -75,67 +77,52 @@ t_nodo*obtener_nodo_porpos(t_lista*lista, int pos)
     }
 
     if(0 != pos)
-        nodobuscado = NULL;
+        nue_prinodo = NULL;
     else
     {
-        nodobuscado = *lista;
+        nue_prinodo = *lista;
         *lista = NULL;
     }
 
-    return nodobuscado;
+    return nue_prinodo;
 }
 
-void mezclaryunirlistas(t_lista*lista_a, t_lista*lista_b)
+void mezclar_y_unirlistas(t_lista*lista_a, t_lista*lista_b)
 {
-    t_nodo *aux, *aux_mov;
+    t_nodo *destino_temp, *aux_movimiento;
     int num_lista;
 
-    aux = NULL;
+    destino_temp = NULL;
 
     srand(time(NULL));
 
     while( (*lista_a) || (*lista_b) )
     {
         num_lista = (rand()%2);
-        printf("%d ", num_lista);
 
         if( ( ((*lista_a) && (*lista_b)) && !(num_lista) ) || ((*lista_a) && !(*lista_b)) )
         {
-            aux_mov = *lista_a;
-            *lista_a = aux_mov->sig;
+            aux_movimiento = *lista_a;
+            *lista_a = aux_movimiento->sig;
         }
         else
         {
-            aux_mov = *lista_b;
-            *lista_b = aux_mov->sig;
+            aux_movimiento = *lista_b;
+            *lista_b = aux_movimiento->sig;
         }
 
-        aux_mov->sig = aux;
-        aux = aux_mov;
+        aux_movimiento->sig = destino_temp;
+        destino_temp = aux_movimiento;
     }
 
-    *lista_a = aux;
+    *lista_a = destino_temp;
 }
 
-void desordenarlista(t_lista*lista_a, int cant)
+void mezclar_jugadores(t_lista*lista_a, int cant)
 {
     t_lista lista_b;
-    int pos;
 
-    pos = cant/2;
-    printf("\n-pos: %d\n\n", pos);
+    lista_b = crear_sublista_desdepos(lista_a, ((cant/2) + 1));
 
-    lista_b = obtener_nodo_porpos(lista_a, pos);
-
-    printf("//lista_a//\n");
-    recorrerlista(lista_a, mostrar_int);
-    printf("\n\n");
-
-    printf("//lista_b//\n");
-    recorrerlista(&lista_b, mostrar_int);
-    printf("\n\n");
-
-    mezclaryunirlistas(lista_a, &lista_b);
-
-    vaciarlista(&lista_b);
+    mezclar_y_unirlistas(lista_a, &lista_b);
 }

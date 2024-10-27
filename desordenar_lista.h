@@ -26,10 +26,10 @@ void recorrerlista(t_lista*, void (*accion)(void*));
 void vaciarlista(t_lista*);
 
 ////
-t_nodo*obtener_nodo_porpos(t_lista*, int);
+t_nodo*crear_sublista_desdepos(t_lista*, int);
 
-void mezclaryunirlistas(t_lista*, t_lista*);
+void mezclar_y_unirlistas(t_lista*, t_lista*);
 
-void desordenarlista(t_lista*, int);
+void mezclar_jugadores(t_lista*, int);
 
 #endif // DESORDENAR_LISTA_H_INCLUDED
