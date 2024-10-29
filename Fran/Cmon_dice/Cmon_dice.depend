@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1730180749 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.c
+1730231115 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.c
 	"colaDinamica.h"
 
 1730065408 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.h
@@ -8,7 +8,7 @@
 	<memory.h>
 	"../nodo.h"
 
-1730182827 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.c
+1730237084 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.c
 	"funciones.h"
 
 1730156059 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.c
@@ -27,7 +27,7 @@
 1730065412 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\curl\tp.c
 	"TP.h"
 
-1730159379 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\curl\tp.h
+1730232386 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\curl\tp.h
 	<curl/curl.h>
 	<stdio.h>
 	<stdlib.h>
@@ -36,7 +36,7 @@
 
 1730065408 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\nodo.h
 
-1730182827 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.h
+1730237084 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>

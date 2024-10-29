@@ -56,8 +56,6 @@ int ingresoJugadores(t_lista* jugadores)
             }
         }while(*(jugador) == '\0');
 
-        cant++;
-
         ret= insertarOrdenado(jugadores, &jugador, sizeof(jugador), cmpNombre, 1); //PARA NO DUPLICADOS
 
         if(ret == NO_MEM)
@@ -67,6 +65,8 @@ int ingresoJugadores(t_lista* jugadores)
             printf("El jugador %s ya habia sido ingresado\n", jugador);
             system("pause");
         }
+        else
+            cant++;
 
         printf("\n");
         system("cls");
@@ -117,6 +117,7 @@ int leerConf(const char* archConf, t_conf* varConf)
     }while(varConf->nivel != 'F' && varConf->nivel != 'M' && varConf->nivel != 'D');
 
     system("cls");
+    auxConf.cantTiempoResp = 0; //para verificar que no esta vacio
     while(fgets(cad, sizeof(cad), pf))
     {
         auxChar= strchr(cad, '\n');
@@ -131,7 +132,7 @@ int leerConf(const char* archConf, t_conf* varConf)
             return ERROR_ARCH;
         }
 
-        if(!esNivelValido(auxConf.nivel) || auxConf.cantTiempoSec>20 || auxConf.cantTiempoResp>20 || auxConf.cantVidas>5)
+        if(!esNivelValido(auxConf.nivel) || !enRango(auxConf.cantTiempoSec,1,20) || !enRango(auxConf.cantTiempoResp,1,20) || !enRango(auxConf.cantVidas,0,5))
         {
             fclose(pf);
             printf("Error en la lectura del arch de configuracion: formato invalido");
@@ -143,7 +144,10 @@ int leerConf(const char* archConf, t_conf* varConf)
     }
 
     fclose(pf);
-    return TODO_OK;
+    if(auxConf.cantTiempoResp == 0)
+        return ERROR_ARCH;
+    else
+        return TODO_OK;
 }
 
 char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
@@ -155,7 +159,7 @@ char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
         printf("Se jugara segun el orden de la lista de jugadores\n");
         printf("\nLa configuracion seleccionada para la partida fue la siguiente:\n\n");
         mostrarConf(*conf);
-        printf("Teclas para jugar:\n\n"
+        printf("\n\nTeclas para jugar:\n\n"
                "A - AZUL\n"
                "V - VERDE\n"
                "R - ROJO\n"
@@ -176,7 +180,7 @@ char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
     return resp;
 }
 
-int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres)
+int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int *cantJres)
 {
     int opc, cantAdc;
     char resp;
@@ -208,8 +212,8 @@ int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres)
             case 1: cantAdc = ingresoJugadores(jugadores);
                     if(cantAdc == ERROR_MEM)
                         return ERROR_MEM;
-                    cantJres+= cantAdc;
-                    desordenarLista(jugadores, cantJres);
+                    *cantJres+= cantAdc;
+                    desordenarLista(jugadores, *cantJres);
                     break;
             case 2: if(leerConf(NOM_ARCH_CONF, conf) != TODO_OK)
                         return ERROR_ARCH;
@@ -320,10 +324,6 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
         *(respuesta + (largoResp - vidasUsadas)) = '\0';
     }
 
-    if(largoResp < ronda)
-        printf("Ronda %d\n\n"
-                "Ingrese su respuesta(una letra a la vez)\n\n\n", ronda, respuesta);
-
     *pVidas -= vidasUsadas;
     continuarTimer = 1;
     return vidasUsadas;
@@ -340,36 +340,39 @@ int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* vidas)
         return ERROR_THREAD;
 
     Sleep(100); //espera un instante a que se inicialice el timer
-    printf("Ingrese su respuesta(una letra a la vez)\n\n\n");
-
     numLetra= strlen(infoRound->respuesta);
+
     while(tiempoResp>0 && numLetra != ronda && !perdio)
     {
-        printf("\033[A\rRespuesta: %s", infoRound->respuesta);
+        printf("Ronda %d\n\n"
+                "Ingrese su respuesta(una letra a la vez)\n\n"
+                "Respuesta: %s", ronda, infoRound->respuesta);
         fflush(stdin);
         scanf("%c", &auxChar);
         auxChar = toupper(auxChar);
-        if(auxChar == 'A' || auxChar == 'R' || auxChar == 'V' || auxChar == 'N')
+        if(tiempoResp>0)
         {
-            *(infoRound->respuesta+numLetra) = auxChar;
-            numLetra++;
-            *(infoRound->respuesta+numLetra) = '\0';
-        }
+            if(auxChar == 'A' || auxChar == 'R' || auxChar == 'V' || auxChar == 'N')
+            {
+                *(infoRound->respuesta+numLetra) = auxChar;
+                numLetra++;
+                *(infoRound->respuesta+numLetra) = '\0';
+            }
 
-        if(auxChar == 'U')
-        {
-            *(infoRound->respuesta+numLetra+1) = '\0';
-            infoRound->vidasUsadas += usarVidas(vidas, infoRound->secuencia, infoRound->respuesta, conf->cantTiempoSec, ronda);
-            numLetra = strlen(infoRound->respuesta);
-            if(_beginthread(timerResp, 0, &argTimer) == -1)
-                return ERROR_THREAD;
+            if(auxChar == 'U')
+            {
+                *(infoRound->respuesta+numLetra+1) = '\0';
+                infoRound->vidasUsadas += usarVidas(vidas, infoRound->secuencia, infoRound->respuesta, conf->cantTiempoSec, ronda);
+                numLetra = strlen(infoRound->respuesta);
+                if(_beginthread(timerResp, 0, &argTimer) == -1)
+                    return ERROR_THREAD;
+            }
         }
     }
 
     continuarTimer = 0;
     if(numLetra == ronda)
     {
-        *(infoRound->respuesta+numLetra) = '\0';
         return RESP_COMPLETA;
     }
     else
@@ -379,6 +382,30 @@ int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* vidas)
     }
 }
 
+int extenderSecuencia(t_round* infoRound, t_contenedor* secuencia, CURL** curl)
+{
+    int nueTam;
+
+    obtener_secuencia(curl, secuencia);
+    nueTam = secuencia->tamcontenido*0.5;
+
+    infoRound->secuencia = (char*)realloc(infoRound->secuencia, nueTam);
+    if(!infoRound->secuencia || (infoRound->respuesta = (char*)realloc(infoRound->respuesta, nueTam)) == NULL)
+    {
+        free(infoRound->secuencia);
+        return ERROR_MEM;
+    }
+
+    return TODO_OK;
+}
+
+void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos)
+{
+    curl_easy_cleanup(*curl);
+    curl_global_cleanup();
+    free(URL);
+    free(cadena_datos);
+}
 
 int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int cantJres)
 {
@@ -422,22 +449,25 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
 
         do{
             infoRound.vidasUsadas = 0;
+            infoRound.secuencia = (char*)malloc(TAM_SEC_INI + 1);
+            if(!infoRound.secuencia || (infoRound.respuesta = (char*)malloc(TAM_SEC_INI + 1)) == NULL)
+            {
+                free(infoRound.secuencia);
+                limpiezaCurl(&curl, URL, secuencia.cadena_datos);
+                return ERROR_MEM;
+            }
 
+            *(infoRound.respuesta) = '\0';
             guardarSecuencia(&infoRound, &secuencia, ronda);
             system("cls");
             printf("Ronda %d\n\n", ronda);
             mostrarSecuencia(infoRound.secuencia, conf->cantTiempoSec);
             do{
-                printf("Ronda %d\n\n", ronda);
-                *(infoRound.respuesta) = '\0';
                 estado= recibirRespuesta(&infoRound, conf, ronda, &vidas);
 
                 if(estado == ERROR_THREAD)
                 {
-                    curl_easy_cleanup(curl);
-                    curl_global_cleanup();
-                    free(URL);
-                    free(secuencia.cadena_datos);
+                    limpiezaCurl(&curl, URL, secuencia.cadena_datos);
                     return ERROR_THREAD;
                 }
 
@@ -468,17 +498,18 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
                 ponerEnCola(&infoRoundsJugador, &infoRound, sizeof(t_round));
 
                 if(ronda == secuencia.tamcontenido*0.5)
-                {
-                    system("cls");
-                    printf("Felicidades, ha completado todas las rondas."); //esto lo puse porque despues habria que ver si expandir o no la secuencia
-                }
+                    if(extenderSecuencia(&infoRound, &secuencia, &curl) != TODO_OK)
+                    {
+                        limpiezaCurl(&curl, URL, secuencia.cadena_datos);
+                        return ERROR_MEM;
+                    }
 
                 ronda++;
             }
             else
                 infoRound.punt = 0;
 
-        }while(!perdio && ronda != secuencia.tamcontenido*0.5);
+        }while(!perdio);
 
         if(puntJugador > puntMax)
             puntMax = puntJugador;
@@ -487,10 +518,7 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
         leerElemento(&itJugadores, &jugador, sizeof(jugador));
     }
 //FIN
-    curl_easy_cleanup(curl);
-    curl_global_cleanup();
-    free(URL);
-    free(secuencia.cadena_datos);
+    limpiezaCurl(&curl, URL, secuencia.cadena_datos);
 
     return puntMax;
 }

@@ -13,10 +13,11 @@
 #include "curl/TP.h"
 
 #define esNivelValido(a)((a) == 'F' || (a) == 'M' || (a) == 'D')
+#define enRango(num,limInf,limSup)((num)>=(limInf) && (num)<=(limSup))
 
 #define NOM_ARCH_CONF "config.txt"
 
-#define MAX_SEC 11
+#define TAM_SEC_INI 3
 #define MAX_NOM 31
 #define CAMPOS_ARCH_CONF 4
 
@@ -32,8 +33,8 @@
 
 typedef struct
 {
-    char secuencia[MAX_SEC];
-    char respuesta[MAX_SEC];
+    char* secuencia;
+    char* respuesta;
     int vidasUsadas;
     int punt;
 }t_round;
@@ -53,7 +54,7 @@ void mostrarJugadores(t_lista* jugadores);
 //lectura de conf segun dificultad elegida -> despues de esto usar desordenarLista
 int leerConf(const char* archConf, t_conf* varConf);
 //mostrar orden jugadores, conf, teclas y preguntar si esta listo para empezar
-int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres);
+int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int *cantJres);
 char mostrarInfoPartida(t_lista* jugadores, t_conf* conf);
 void mostrarConf(t_conf conf);
 //jugar -> usa biblioteca time y curl, conio usa colores, investigar sonidos y displays
@@ -62,6 +63,10 @@ void guardarSecuencia(t_round* infoRound, t_contenedor* secuencia, int ronda);
 void mostrarSecuencia(char const* secuencia, int cantTiempoSec);
 int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* pVidas);
 int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, int ronda);
+int extenderSecuencia(t_round* infoRound, t_contenedor* secuencia, CURL** curl);
+void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos);
+//en el informe habra que utilizar free() sobre infoRound.secuencia y respuesta si strlen(infoRound.secuencia) != MAX_SEC
+
 //generar archivo informe
 
 #endif // FUNCIONES_H_INCLUDED

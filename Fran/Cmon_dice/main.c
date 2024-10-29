@@ -16,8 +16,11 @@ int main()
     if(leerConf(NOM_ARCH_CONF, &conf)!= TODO_OK)
         return 1;
     desordenarLista(&jugadores, cantJres);
-    if(wrapper_mostrarInfoPartida(&jugadores, &conf, cantJres) != TODO_OK)
+    if(wrapper_mostrarInfoPartida(&jugadores, &conf, &cantJres) != TODO_OK)
+    {
+        vaciarLista(&jugadores);
         return 1;
+    }
     puntMax = jugar(&jugadores, &infoRoundsPorJugador, &conf, cantJres);
     system("cls");
     if(puntMax >=0)

@@ -10,7 +10,7 @@ void vaciarCola(t_cola* c)
 {
     t_nodo *elim;
 
-    while(!c->pri)
+    while(c->pri)
     {
         elim= c->pri;
 
