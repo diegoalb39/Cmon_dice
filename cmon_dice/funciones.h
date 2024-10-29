@@ -20,15 +20,15 @@ typedef struct
     char secuencia[TAM_SECUENCIA];
     char respuesta [TAM_SECUENCIA];
     unsigned vidas_usadas;
-    unsigned puntos;
+    unsigned puntos;//por ronda
 }t_round;
-
+//t_jugador solo conserva cadenas, se puede desistir de esta estructura.
 typedef struct
 {
-    unsigned n_orden;
+    //unsigned n_orden;
     char nombre[TAM_NOMBRE];
-    unsigned puntaje_total;
-    t_cola rounds;
+    //unsigned puntaje_total;
+    //t_cola rounds;
 }t_jugador;
 
 
@@ -37,13 +37,14 @@ int menu(const char *msj, int li, int ls);
 void wrapper_menuInicial();
 int jugar();
 
+int iniciar_juego();//funcion de francisco
 //void generarSetupJuego();
 //void iniciar_juego();
 //void mostrar_informe();
 //void generar_informe_txt();
-void mostrar_y_generar_informe(t_lista* pl, void(*accion)(void* e, void* p, void* pf, void* pc, Cmp cmp));
-void accionCmpYMostrar(void* e, void* p, void* pf, void* pc, Cmp cmp);
-int cmp_puntaje(const void* a, const void* b);
+void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
+                               void(*accion)(void* dato1, void* dato2, void* p, void* pf));
+void accion_mostrar(void* dato1, void* dato2, void* p, void* pf);
 
 
 

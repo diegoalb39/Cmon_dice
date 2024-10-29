@@ -34,6 +34,8 @@ void mezclaryunirlistas(t_lista*, t_lista*);
 void desordenarlista(t_lista*, int);
 
 ///agregado
-void recorrerlista_d(t_lista* pl, void(*accion)(void* e, void* p, void* pf, void* pl, Cmp cmp),
-                     Cmp cmp, void* p, void* pf, void* pc);
+void recorrer_listas_iguales_paralelo(t_lista* pl1, t_lista* pl2,
+                                    void(*accion)(void* dato1, void* dato2, void* p, void* pf),
+                                    void* p, void* pf);
+
 #endif // DESORDENAR_LISTA_H_INCLUDED

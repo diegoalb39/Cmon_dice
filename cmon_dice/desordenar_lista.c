@@ -142,12 +142,16 @@ void desordenarlista(t_lista*lista_a, int cant)
 
 
 //agregado
-void recorrerlista_d(t_lista* pl, void(*accion)(void* e, void* p, void* pf, void* pl, Cmp cmp),
-                     Cmp cmp, void* p, void* pf, void* pc)
+//recorre 2 listas de igual cantidad de elementos.
+void recorrer_listas_iguales_paralelo(t_lista* pl1, t_lista* pl2,
+                                    void(*accion)(void* dato1, void* dato2, void* p, void* pf),
+                                    void* p, void* pf)
 {
-    while(*pl)
+    while(*pl1 && *pl2)
     {
-        accion((*pl)->dato, accion, cmp, pf, pc);
-        pl = &(*pl)->sig;
+        accion((*pl1)->dato, (*pl2)->dato, p, pf);
+
+        pl1 = &(*pl1)->sig;
+        pl2 = &(*pl2)->sig;
     }
 }
