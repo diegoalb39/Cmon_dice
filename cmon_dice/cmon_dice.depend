@@ -19,3 +19,49 @@
 	"../listaDinamica/lista.h"
 	"funciones.h"
 
+1730234976 source:d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\listadinamica\lista.c
+	"lista.h"
+
+1730234976 d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\listadinamica\lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../Nodo/nodo.h"
+
+1730234976 d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\nodo\nodo.h
+
+1730234976 source:d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\cmon_dice\desordenar_lista.c
+	"desordenar_lista.h"
+
+1730234976 d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\cmon_dice\desordenar_lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"../Nodo/nodo.h"
+
+1730237274 source:d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\cmon_dice\funciones.c
+	"funciones.h"
+
+1730237249 d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\cmon_dice\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	"../listaDinamica/lista.h"
+	"desordenar_lista.h"
+
+1730234976 source:d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\cmon_dice\main.c
+	"../listaDinamica/lista.h"
+	"funciones.h"
+	"TP.h"
+	"desordenar_lista.h"
+
+1730234976 d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\cmon_dice\tp.h
+	<curl/curl.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+
+1730234976 source:d:\diego\ingenieria_en_informatica\2024\2docuatrimestre\algoritmos\repogit\cmon_dice\cmon_dice\tp.c
+	"TP.h"
+

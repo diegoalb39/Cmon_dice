@@ -18,17 +18,18 @@ void wrapper_menuInicial()
     int estado;
     switch(menu(MSJ_MENU_INICIAL,LI_MENU_INICIAL,LS_MENU_INICIAL))
     {
-        case 'A': estado = jugar();
+        //case 'A': estado = jugar();
+        case 'A': estado = iniciar_juego();//test
         case 'B': estado = END;
     }
     if(estado == END)
         return;
 }
 
-int jugar()
+int iniciar_juego()
 {
     t_lista listaJugadores;
-    t_lista listaRondas;//lista con ptr a cola
+    t_lista listaRondas;
     int puntajeMax;
 
     crearlista(&listaJugadores);
@@ -47,56 +48,69 @@ int jugar()
                             {"jugador3"},
                             {"jugador4"}};
     for(int i = 0; i<sizeof(jugadores)/sizeof(t_jugador); i++)
-        ponerenlista_final(&listaJugadores, &jugadores[i], TAM_NOMBRE);//puede fallar el tam
+        ponerenlista_final(&listaJugadores, &jugadores[i], TAM_NOMBRE);
+
+    char* cad1 = malloc(TAM_SECUENCIA);
+    char* cad2 = malloc(TAM_SECUENCIA);
+    char* cad3 = malloc(TAM_SECUENCIA);
+    char* cad4 = malloc(TAM_SECUENCIA);
+    char* cad5 = malloc(TAM_SECUENCIA);
+    char* cad6 = malloc(TAM_SECUENCIA);
+    char* cad7 = malloc(TAM_SECUENCIA);
+    char* cad8 = malloc(TAM_SECUENCIA);
+    char* cad9 = malloc(TAM_SECUENCIA);
+    char* cad10 = malloc(TAM_SECUENCIA);
+    char* cad11 = malloc(TAM_SECUENCIA);
+    char* cad12 = malloc(TAM_SECUENCIA);
+    char* cad13 = malloc(TAM_SECUENCIA);
+    char* cad14 = malloc(TAM_SECUENCIA);
+    char* cad15 = malloc(TAM_SECUENCIA);
+    char* cad16 = malloc(TAM_SECUENCIA);
+
+    strcpy(cad1, "Q");
+    strcpy(cad2, "QW");
+    strcpy(cad3, "QWE");
+    strcpy(cad4, "QWER");
+    strcpy(cad5, "R");
+    strcpy(cad6, "RE");
+    strcpy(cad7, "REW");
+    strcpy(cad8, "REWQ");
+    strcpy(cad9, "Q");
+    strcpy(cad10, "Q");
+    strcpy(cad11, "QW");
+    strcpy(cad12, "QE");
+    strcpy(cad13, "QWE");
+    strcpy(cad14, "QRE");
+    strcpy(cad15, "QTW");
+    strcpy(cad16, "QQQQ");
+
 
     t_round datosJ1[] = {
-        {"Q", "E", 2, 0},
-        {"QW", "EF", 2, 0},
-        {"QWE", "QWE", 2, 50},
-        {"QWER", "REWQ", 2, 0}
+        {cad1, cad9, 2, 0},
+        {cad2, cad10, 2, 0},
+        {cad3, cad11, 2, 50},
+        {cad4, cad12, 2, 0}
     };
 
     for(int j=0; j<4; j++)
         ponerEnCola(&colaJ1, &datosJ1[j], sizeof(t_round));
 
-    ponerenlista_final(&listaRondas, &colaJ1, sizeof(colaJ1));///!!!!!!!!!!!
+    ponerenlista_final(&listaRondas, &colaJ1, sizeof(colaJ1));
 
     t_round datosJ2[] = {
-        {"R", "R", 2, 1},
-        {"RE", "RQ", 2, 1},
-        {"REQ", "REQ", 2, 5},
-        {"REQW", "RECQ", 2, 1}
+        {cad5, cad13, 2, 1},
+        {cad6, cad14, 2, 1},
+        {cad7, cad15, 2, 5},
+        {cad8, cad16, 2, 1}
     };
     for(int k=0; k<4; k++)
         ponerEnCola(&colaJ2, &datosJ2[k], sizeof(t_round));
 
-    ponerenlista_final(&listaRondas, &colaJ2, sizeof(colaJ2));///!!!!!!!!!!!
-
-    t_round datosJ3[] = {
-        {"A", "S", 2, 2},
-        {"AS", "SA", 2, 1},
-        {"ASD", "DSA", 2, 5},
-        {"ASDF", "FDSA", 2, 1}
-    };
-    for(int m=0; m<4; m++)
-        ponerEnCola(&colaJ3, &datosJ3[m], sizeof(t_round));
-
-    ponerenlista_final(&listaRondas, &colaJ3, sizeof(colaJ3));///!!!!!!!!!!!
-
-    t_round datosJ4[] = {
-        {"B", "D", 2, 0},
-        {"BO", "AA", 2, 0},
-        {"BOC", "DD", 2, 0},
-        {"BOCA", "BOCA", 2, 50}
-    };
-    for(int n=0; n<4; n++)
-        ponerEnCola(&colaJ4, &datosJ4[n], sizeof(t_round));
-
-    ponerenlista_final(&listaRondas, &colaJ4, sizeof(colaJ4));///!!!!!!!!!!!
+    ponerenlista_final(&listaRondas, &colaJ2, sizeof(colaJ2));
 
     /*****************************************************************************/
 
-    puntajeMax = iniciar_juego();
+    puntajeMax = jugar();
 
     /*
     luego de terminado el juego:
@@ -107,9 +121,6 @@ int jugar()
     -iniciar_juego devuelve el puntaje maximo entre los jugadores.
     */
     mostrar_y_generar_informe(&listaJugadores, &listaRondas, &puntajeMax, accion_mostrar);
-
-    vaciarlista(&listaJugadores);
-    vaciarlista(&listaRondas);
 
     return 0;
 }
@@ -132,6 +143,9 @@ void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
 
     printf("Mejor Puntaje de la partida: %d \nGanador/es de la partida: ", *puntMax);
     recorrer_listas_iguales_paralelo(jug, rondas, accion_mostrar, puntMax, archInf);
+
+    vaciarlista(jug);
+    vaciarlista(rondas);
 
     fclose(archInf);
 }
@@ -158,6 +172,8 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf)
                 round, ronda.secuencia, ronda.respuesta, ronda.vidas_usadas, ronda.puntos);
         round++;
         total+=ronda.puntos;
+        free(ronda.secuencia);
+        free(ronda.respuesta);
     }
     if(*(int*)p == total)
     {
@@ -168,7 +184,7 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf)
 }
 
 
-int iniciar_juego()
+int jugar()
 {
     int num = 50;
     return num;

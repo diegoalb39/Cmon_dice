@@ -17,8 +17,8 @@
 
 typedef struct
 {
-    char secuencia[TAM_SECUENCIA];
-    char respuesta [TAM_SECUENCIA];
+    char* secuencia;
+    char* respuesta;
     unsigned vidas_usadas;
     unsigned puntos;//por ronda
 }t_round;
@@ -35,26 +35,12 @@ typedef struct
 
 int menu(const char *msj, int li, int ls);
 void wrapper_menuInicial();
-int jugar();
+int jugar();//funcion de francisco
 
-int iniciar_juego();//funcion de francisco
-//void generarSetupJuego();
-//void iniciar_juego();
-//void mostrar_informe();
-//void generar_informe_txt();
+int iniciar_juego();//agregada
 void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
                                void(*accion)(void* dato1, void* dato2, void* p, void* pf));
 void accion_mostrar(void* dato1, void* dato2, void* p, void* pf);
-
-
-
-
-
-
-
-
-
-
 
 
 
