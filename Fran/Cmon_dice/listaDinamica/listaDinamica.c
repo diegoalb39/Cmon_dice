@@ -252,7 +252,7 @@ int leerElemento(t_lista_it* it, void* dato, unsigned tam)
         return LISTA_VACIA;
 
     memcpy(dato, it->cursor->info, minimo(tam, it->cursor->tam));
-    if(it->cursor->sig != NULL && it->cursor->sig != it->ini)
+    if(it->cursor->sig != NULL)
         it->cursor= it->cursor->sig;
 
     return TODO_OK;
@@ -263,5 +263,5 @@ void reiniciarCursor(t_lista_it* it)
 }
 int finIterador(t_lista_it* it) //indefinido si se utiliza antes de inicializar
 {
-    return (it->cursor->sig == NULL || it->cursor->sig == it->ini);
+    return (it->cursor == NULL || it->cursor == it->ini);
 }

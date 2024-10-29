@@ -65,6 +65,8 @@ int ponerEnCola(t_cola* c, const void* info, unsigned tamInfo)
     else
         c->ult->sig= nue;
 
+    c->ult = nue;
+
     return TODO_OK;
 }
 

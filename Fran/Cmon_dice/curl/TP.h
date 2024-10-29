@@ -54,7 +54,7 @@ size_t solicitar_numeros(void*, size_t, size_t, void*);
 int armado_url(char**);
 void config_curl(CURL**, char*, t_contenedor*);
 int obtener_secuencia(CURL**, t_contenedor*);
-int juego_princicipal();
+//int juego_princicipal();
 
 //int funcion_general(int);
 

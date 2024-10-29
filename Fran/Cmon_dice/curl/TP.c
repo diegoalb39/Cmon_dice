@@ -124,7 +124,7 @@ int obtener_secuencia(CURL**curl, t_contenedor*contenedor)
     return ALL_OK;
 }
 
-int juego_princicipal()
+/*int juego_princicipal()
 {
     t_contenedor secuencia;
     CURL*curl;//puntero al handle creado
@@ -168,7 +168,7 @@ int juego_princicipal()
     free( secuencia.cadena_datos );
 
     return 1;
-}
+}*/
 
 /*
 int funcion_general(int dificultad)

@@ -1,5 +1,9 @@
 #include "funciones.h"
 
+int continuarTimer;
+int tiempoResp;
+int perdio;
+
 int cmpNombre(const void *e1, const void *e2)
 {
     return strcmpi((char*)e1,(char*)e2);
@@ -7,7 +11,7 @@ int cmpNombre(const void *e1, const void *e2)
 
 void mostrarJug(const void *e)
 {
-    printf("%s\n", ((t_jugador*)e)->nombre);
+    printf("%s\n", ((char*)e));
 }
 
 void mostrarConf(t_conf conf)
@@ -30,7 +34,7 @@ void mostrarJugadores(t_lista* jugadores)
 
 int ingresoJugadores(t_lista* jugadores)
 {
-    t_jugador jugador;
+    char jugador[MAX_NOM];
     char opc, *auxChar;
     int cant=0, ret;
 
@@ -39,30 +43,28 @@ int ingresoJugadores(t_lista* jugadores)
             mostrarJugadores(jugadores);
             printf("Ingrese el nombre del jugador(max. 30 caracteres): ");
             fflush(stdin);
-            fgets(jugador.nombre, sizeof(jugador.nombre), stdin);
-            auxChar= strchr(jugador.nombre, '\n');
+            fgets(jugador, sizeof(jugador), stdin);
+            auxChar= strchr(jugador, '\n');
             if(auxChar)
                 *auxChar = '\0';
 
-            if(*(jugador.nombre) == '\0')
+            if(*(jugador) == '\0')
             {
                 printf("Debe ingresar por lo menos un caracter\n");
                 system("pause");
                 system("cls");
             }
-        }while(*(jugador.nombre) == '\0');
+        }while(*(jugador) == '\0');
 
         cant++;
-        jugador.puntTotal = 0;
-        crearCola(&jugador.infoRounds);
 
-        ret= insertarOrdenado(jugadores, &jugador, sizeof(jugador), cmpNombre, 1);
+        ret= insertarOrdenado(jugadores, &jugador, sizeof(jugador), cmpNombre, 1); //PARA NO DUPLICADOS
 
         if(ret == NO_MEM)
             return ERROR_MEM;
         if(ret == DUPLICADO)
         {
-            printf("El jugador %s ya habia sido ingresado\n", jugador.nombre);
+            printf("El jugador %s ya habia sido ingresado\n", jugador);
             system("pause");
         }
 
@@ -72,7 +74,8 @@ int ingresoJugadores(t_lista* jugadores)
         printf("\u00a8Desea ingresar otro jugador? Y/N\n");
         fflush(stdin);
         scanf("%c", &opc);
-        while(opc != 'Y' && opc != 'N' && opc != 'y' && opc != 'n')
+        opc = toupper(opc);
+        while(opc != 'Y' && opc != 'N')
         {
             printf("\nOpcion invalida\n\n");
             system("pause");
@@ -83,7 +86,7 @@ int ingresoJugadores(t_lista* jugadores)
             scanf("%c", &opc);
         }
         system("cls");
-    }while(opc == 'Y' || opc == 'y');
+    }while(opc == 'Y');
 
     return cant;
 }
@@ -104,6 +107,7 @@ int leerConf(const char* archConf, t_conf* varConf)
                "Ingrese el nivel de dificultad deseado: ");
         fflush(stdin);
         scanf("%c", &varConf->nivel);
+        varConf->nivel = toupper(varConf->nivel);
         if(varConf->nivel != 'F' && varConf->nivel != 'M' && varConf->nivel != 'D')
         {
             printf("\n\nLa opcion elegida no es valida");
@@ -142,9 +146,8 @@ int leerConf(const char* archConf, t_conf* varConf)
     return TODO_OK;
 }
 
-int mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres)
+char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
 {
-    int opc, cantAdc;
     char resp;
 
     do{
@@ -152,19 +155,35 @@ int mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres)
         printf("Se jugara segun el orden de la lista de jugadores\n");
         printf("\nLa configuracion seleccionada para la partida fue la siguiente:\n\n");
         mostrarConf(*conf);
-
+        printf("Teclas para jugar:\n\n"
+               "A - AZUL\n"
+               "V - VERDE\n"
+               "R - ROJO\n"
+               "N - NARANJA\n"
+               "U - USAR VIDAS");
         printf("\n\n\u00a8Esta listo para comenzar la partida? [Y/N]\n");
         fflush(stdin);
         scanf("%c", &resp);
-        if(resp != 'Y' && resp != 'N' && resp != 'y' && resp != 'n')
+        resp = toupper(resp);
+        if(resp != 'Y' && resp != 'N')
         {
             printf("\nOpcion invalida\n\n");
             system("pause");
             system("cls");
         }
-    }while(resp != 'Y' && resp != 'N' && resp != 'y' && resp != 'n');
+    }while(resp != 'Y' && resp != 'N');
 
-    while(resp == 'N' || resp == 'n')
+    return resp;
+}
+
+int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres)
+{
+    int opc, cantAdc;
+    char resp;
+
+    resp = mostrarInfoPartida(jugadores, conf);
+
+    while(resp == 'N')
     {
         system("cls");
         do{
@@ -201,23 +220,277 @@ int mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int cantJres)
         }
 
         system("cls");
-        do{
-            mostrarJugadores(jugadores);
-            printf("Se jugara segun el orden de la lista de jugadores\n");
-            printf("\nLa configuracion seleccionada para la partida fue la siguiente:\n\n");
-            mostrarConf(*conf);
-
-            printf("\n\n\u00a8Esta listo para comenzar la partida? [Y/N]\n");
-            fflush(stdin);
-            scanf("%c", &resp);
-            if(resp != 'Y' && resp != 'N' && resp != 'y' && resp != 'n')
-            {
-                printf("\nOpcion invalida\n\n");
-                system("pause");
-                system("cls");
-            }
-        }while(resp != 'Y' && resp != 'N' && resp != 'y' && resp != 'n');
+        resp = mostrarInfoPartida(jugadores, conf);
     }
 
     return TODO_OK;
+}
+
+void timerResp(void* arg)
+{
+    tiempoResp = *(int*)arg;
+
+    while(tiempoResp > 0 && continuarTimer)
+    {
+        Sleep(1000);
+        tiempoResp--;
+    }
+
+    if(tiempoResp==0 && continuarTimer)
+    {
+        system("cls");
+        printf("Se acabo el tiempo. Presione ENTER para continuar...");
+    }
+}
+
+void guardarSecuencia(t_round* infoRound, t_contenedor* secuencia, int ronda)
+{
+    char colores[]= {'A','V','R','N'};
+    int numLetra, pos;
+
+    for(numLetra=0; numLetra<ronda; numLetra++)
+    {
+        pos = *(secuencia->cadena_datos+(numLetra*2)) - '0';
+        *(infoRound->secuencia+numLetra) = colores[pos-1];
+    }
+
+    *(infoRound->secuencia+numLetra) = '\0';
+}
+
+void mostrarSecuencia(char const* secuencia, int cantTiempoSec)
+{
+    int i=0;
+
+    printf("Secuencia: ");
+    while(*(secuencia+i) != '\0')
+    {
+        printf("%c", *(secuencia+i));
+        i++;
+        Sleep(1000);
+    }
+
+    Sleep((cantTiempoSec-1)*1000);
+    system("cls");
+}
+
+int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, int ronda)
+{
+    int vidasUsadas, largoResp;
+
+    continuarTimer = 0;
+    system("cls");
+    if(*pVidas == 0)
+    {
+        printf("No tiene mas vidas para utilizar\n\n");
+        system("pause");
+        perdio = 1;
+        return 0;
+    }
+
+    do{
+        printf("Ronda %d\n\n"
+               "Respuesta actual: %s\n\n"
+               "\r\u00a8Cuantas vidas desea utilizar? Vidas disponibles: %d\n", ronda, respuesta, *pVidas);
+        fflush(stdin);
+        scanf("%d", &vidasUsadas);
+        if(vidasUsadas > *pVidas || vidasUsadas<=0)
+        {
+            printf("\b\033[A");
+            printf("\033[2K");
+            printf("La cantidad de vidas solicitada no es valida\n");
+            system("pause");
+            system("cls");
+        }
+    }while(vidasUsadas > *pVidas || vidasUsadas<0);
+
+    system("cls");
+    largoResp = strlen(respuesta);
+    if(vidasUsadas > largoResp)
+    {
+        *(respuesta) = '\0';
+        printf("La cantidad de vidas utilizadas excede la cantidad de colores ingresados. Se mostrara la secuencia nuevamente...");
+        vidasUsadas = largoResp+1;
+        Sleep(3000);
+        system("cls");
+        printf("Ronda %d\n\n", ronda);
+        mostrarSecuencia(secuencia, cantTiempoSec);
+    }
+    else
+    {
+        *(respuesta + (largoResp - vidasUsadas)) = '\0';
+    }
+
+    if(largoResp < ronda)
+        printf("Ronda %d\n\n"
+                "Ingrese su respuesta(una letra a la vez)\n\n\n", ronda, respuesta);
+
+    *pVidas -= vidasUsadas;
+    continuarTimer = 1;
+    return vidasUsadas;
+}
+
+int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* vidas)
+{
+    int numLetra, argTimer;
+    char auxChar;
+
+    continuarTimer = 1;
+    argTimer= conf->cantTiempoResp + (ronda-1);
+    if(_beginthread(timerResp, 0, &argTimer) == -1)
+        return ERROR_THREAD;
+
+    Sleep(100); //espera un instante a que se inicialice el timer
+    printf("Ingrese su respuesta(una letra a la vez)\n\n\n");
+
+    numLetra= strlen(infoRound->respuesta);
+    while(tiempoResp>0 && numLetra != ronda && !perdio)
+    {
+        printf("\033[A\rRespuesta: %s", infoRound->respuesta);
+        fflush(stdin);
+        scanf("%c", &auxChar);
+        auxChar = toupper(auxChar);
+        if(auxChar == 'A' || auxChar == 'R' || auxChar == 'V' || auxChar == 'N')
+        {
+            *(infoRound->respuesta+numLetra) = auxChar;
+            numLetra++;
+            *(infoRound->respuesta+numLetra) = '\0';
+        }
+
+        if(auxChar == 'U')
+        {
+            *(infoRound->respuesta+numLetra+1) = '\0';
+            infoRound->vidasUsadas += usarVidas(vidas, infoRound->secuencia, infoRound->respuesta, conf->cantTiempoSec, ronda);
+            numLetra = strlen(infoRound->respuesta);
+            if(_beginthread(timerResp, 0, &argTimer) == -1)
+                return ERROR_THREAD;
+        }
+    }
+
+    continuarTimer = 0;
+    if(numLetra == ronda)
+    {
+        *(infoRound->respuesta+numLetra) = '\0';
+        return RESP_COMPLETA;
+    }
+    else
+    {
+        *(infoRound->respuesta+numLetra+1) = '\0';
+        return RESP_NO_COMP;
+    }
+}
+
+
+int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int cantJres)
+{
+    int vidas, ronda, estado, puntMax=0, puntJugador, i;
+    char jugador[MAX_NOM];
+    t_round infoRound;
+    t_cola infoRoundsJugador;
+    t_lista_it itJugadores;
+    t_contenedor secuencia;
+    CURL *curl;
+    char *URL;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl = curl_easy_init();
+
+    if(!curl)
+        return ERROR_CURL;
+
+    if(!armado_url(&URL))
+        return ERROR_MEM;
+
+    config_curl(&curl, URL, &secuencia);
+
+    crearIterador(&itJugadores);
+    inicializarIterador(&itJugadores, jugadores);
+//INICIO
+    for(i= 1; i<= cantJres; i++)
+    {
+        leerElemento(&itJugadores, jugador, sizeof(jugador));
+        vidas = conf->cantVidas;
+        ronda = 1;
+        puntJugador = 0;
+        perdio= 0;
+        crearCola(&infoRoundsJugador);
+        secuencia.tamcontenido = 0;
+        obtener_secuencia(&curl, &secuencia);
+
+        system("cls");
+        printf("Turno del jugador %s", jugador);
+        Sleep(2000);
+
+        do{
+            infoRound.vidasUsadas = 0;
+
+            guardarSecuencia(&infoRound, &secuencia, ronda);
+            system("cls");
+            printf("Ronda %d\n\n", ronda);
+            mostrarSecuencia(infoRound.secuencia, conf->cantTiempoSec);
+            do{
+                printf("Ronda %d\n\n", ronda);
+                *(infoRound.respuesta) = '\0';
+                estado= recibirRespuesta(&infoRound, conf, ronda, &vidas);
+
+                if(estado == ERROR_THREAD)
+                {
+                    curl_easy_cleanup(curl);
+                    curl_global_cleanup();
+                    free(URL);
+                    free(secuencia.cadena_datos);
+                    return ERROR_THREAD;
+                }
+
+                if(estado == RESP_COMPLETA)
+                {
+                    if(strcmp(infoRound.respuesta, infoRound.secuencia) != 0)
+                    {
+                        estado = RESP_INCORRECTA;
+                        printf("\n\nLa respuesta es incorrecta\n\n");
+                        system("pause");
+                        infoRound.vidasUsadas += usarVidas(&vidas, infoRound.secuencia, infoRound.respuesta, conf->cantTiempoSec, ronda);
+                    }
+                }
+                else
+                    infoRound.vidasUsadas += usarVidas(&vidas, infoRound.secuencia, infoRound.respuesta, conf->cantTiempoSec, ronda);
+
+            }while((estado == RESP_INCORRECTA || estado == RESP_NO_COMP) && !perdio);
+
+            if(!perdio)
+            {
+                if(infoRound.vidasUsadas != 0)
+                    infoRound.punt = 1;
+                else
+                    infoRound.punt = 3;
+
+                puntJugador += infoRound.punt;
+
+                ponerEnCola(&infoRoundsJugador, &infoRound, sizeof(t_round));
+
+                if(ronda == secuencia.tamcontenido*0.5)
+                {
+                    system("cls");
+                    printf("Felicidades, ha completado todas las rondas."); //esto lo puse porque despues habria que ver si expandir o no la secuencia
+                }
+
+                ronda++;
+            }
+            else
+                infoRound.punt = 0;
+
+        }while(!perdio && ronda != secuencia.tamcontenido*0.5);
+
+        if(puntJugador > puntMax)
+            puntMax = puntJugador;
+
+        insertarAlFinal(infoRoundsPorJugador, &infoRoundsJugador, sizeof(t_cola));
+        leerElemento(&itJugadores, &jugador, sizeof(jugador));
+    }
+//FIN
+    curl_easy_cleanup(curl);
+    curl_global_cleanup();
+    free(URL);
+    free(secuencia.cadena_datos);
+
+    return puntMax;
 }
