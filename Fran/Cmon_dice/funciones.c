@@ -344,6 +344,7 @@ int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* vidas)
 
     while(tiempoResp>0 && numLetra != ronda && !perdio)
     {
+        system("cls");
         printf("Ronda %d\n\n"
                 "Ingrese su respuesta(una letra a la vez)\n\n"
                 "Respuesta: %s", ronda, infoRound->respuesta);
