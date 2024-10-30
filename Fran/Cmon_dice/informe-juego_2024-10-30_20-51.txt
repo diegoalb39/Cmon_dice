@@ -1,0 +1,14 @@
+************RESUMEN DE LA PARTIDA***********
+Nombre de jugador: jogador2
+
+El jugador jogador2 gano la partida!
+Puntos totales obtenidos por jogador2: 0
+
+
+Nombre de jugador: jugador1
+
+El jugador jugador1 gano la partida!
+Puntos totales obtenidos por jugador1: 0
+
+
+**************FIN DEL INFORME**************

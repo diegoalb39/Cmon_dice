@@ -71,5 +71,8 @@ void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos);
 //en el informe habra que utilizar free() sobre infoRound.secuencia y respuesta
 
 //generar archivo informe
+void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
+                               void(*accion)(void* dato1, void* dato2, void* p, void* pf));
+void accion_mostrar(void* dato1, void* dato2, void* p, void* pf);
 
 #endif // FUNCIONES_H_INCLUDED

@@ -284,7 +284,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
     if(*pVidas == 0)
     {
         printf("No tiene mas vidas para utilizar\n\n");
-        PlaySoundA("multimedia\\game_over.wav",NULL,SND_ASYNC);
+//        PlaySoundA("multimedia\\game_over.wav",NULL,SND_ASYNC);
         system("pause");
         perdio = 1;
         return 0;
@@ -443,7 +443,7 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
         crearCola(&infoRoundsJugador);
         secuencia.tamcontenido = 0;
         obtener_secuencia(&curl, &secuencia);
-        PlaySoundA(NULL, 0, 0);
+//        PlaySoundA(NULL, 0, 0);
         system("cls");
         printf("Turno del jugador %s", jugador);
         Sleep(2000);
@@ -506,7 +506,7 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
                     }
 
                 ronda++;
-                PlaySoundA("multimedia\\next_round.wav",NULL,SND_ASYNC);
+//                PlaySoundA("multimedia\\next_round.wav",NULL,SND_ASYNC);
             }
             else
                 infoRound.punt = 0;
@@ -524,3 +524,65 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
 
     return puntMax;
 }
+
+//agregado
+void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
+                               void(*accion)(void* dato1, void* dato2, void* p, void* pf))
+{
+    //genero nombre de archivo con fecha y hora actuales
+    char fecha[70];
+    char nom[]="informe-juego_";
+    time_t tiempoAct = time(NULL);
+    struct tm tLocal = *localtime(&tiempoAct);
+    strftime(fecha, sizeof(fecha), "%Y-%m-%d_%H-%M", &tLocal);
+    strcat(nom, fecha);
+    strcat(nom, ".txt");
+
+    FILE* archInf = fopen(nom, "wt");
+    if(!archInf)
+        return;
+    fprintf(archInf, "************RESUMEN DE LA PARTIDA***********\n");
+    printf("*******MEJOR PUNTAJE DE LA PARTIDA: %d*******\n***********GANADORES DE LA PARTIDA***********\n", *puntMax);
+    recorrer_listas_iguales_paralelo(jug, rondas, accion_mostrar, puntMax, archInf);
+    printf("****************FIN DEL JUEGO****************");
+    printf("\n\nSe ha generado un informe de la partida en el archivo: '%s'\n", nom);
+    fprintf(archInf, "**************FIN DEL INFORME**************");
+//    vaciarlista(jug);
+//    vaciarlista(rondas);
+
+    fclose(archInf);
+}
+
+//p: puntaje max, pf: ptr file
+//dato1 : nombre de lista de nombres, dato2: cola de la lista de colas
+void accion_mostrar(void* dato1, void* dato2, void* p, void* pf)
+{
+    char nom[MAX_NOM];
+    int round=1;
+    int total=0;
+
+    t_round ronda;
+    t_cola colaRounds = *(t_cola*)dato2;
+    FILE* arch = (FILE*)pf;
+
+    memcpy(nom, dato1, MAX_NOM);
+    fprintf(arch, "Nombre de jugador: %s\n", nom);
+
+    while(!colaVacia(&colaRounds))
+    {
+        sacarDeCola(&colaRounds, &ronda, sizeof(t_round));
+        fprintf(arch, "******************ROUND %d*******************\nSecuencia: %s\nRespuesta: %s\nVidas usadas: %d\nPuntos obtenidos: %d\n",
+                round, ronda.secuencia, ronda.respuesta, ronda.vidasUsadas, ronda.punt);
+        round++;
+        total+=ronda.punt;
+        free(ronda.secuencia);
+        free(ronda.respuesta);
+    }
+    if(*(int*)p == total)
+    {
+        printf("%s\n", nom);
+        fprintf(arch, "\nEl jugador %s gano la partida!", nom);
+    }
+    fprintf(arch, "\nPuntos totales obtenidos por %s: %d\n\n\n", nom, total);
+}
+
