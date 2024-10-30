@@ -386,16 +386,23 @@ int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* vidas)
 int extenderSecuencia(t_round* infoRound, t_contenedor* secuencia, CURL** curl)
 {
     int nueTam;
+    char* temp;
 
     obtener_secuencia(curl, secuencia);
     nueTam = secuencia->tamcontenido*0.5;
 
-    infoRound->secuencia = (char*)realloc(infoRound->secuencia, nueTam);
-    if(!infoRound->secuencia || (infoRound->respuesta = (char*)realloc(infoRound->respuesta, nueTam)) == NULL)
+    temp = (char*)realloc(infoRound->secuencia, nueTam + 1);
+    if(!temp)
+        return ERROR_MEM;
+    infoRound->secuencia = temp;
+
+    temp = (char*)realloc(infoRound->respuesta, nueTam + 1);
+    if(!temp)
     {
         free(infoRound->secuencia);
         return ERROR_MEM;
     }
+    infoRound->respuesta = temp;
 
     return TODO_OK;
 }
