@@ -33,7 +33,7 @@ Compila el proyecto y ejecútalo.
 
 Ejecute el proyecto y siga las instrucciones del juego para jugar. 
 Ingrese el nombre d elos jugadores, la dificultad y cuando este listo presione 'Y' para comenzar.
-Las letras deben ingresarse 1 a 1, (ej: secuencia AR: respuesta A, enter, R, enter).
+Las letras deben ingresarse 1 a 1 (ej: secuencia AR: respuesta A, enter, R, enter, y asi con todas las letra que tenga).
 
 ### Analice las pruebas end-to-end 🔩
 
