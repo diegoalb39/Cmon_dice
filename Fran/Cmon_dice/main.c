@@ -15,6 +15,7 @@ int main()
 
     crearLista(&jugadores);
     crearLista(&infoRoundsPorJugador);
+    PlaySoundA("multimedia\\menu.wav",NULL,SND_LOOP | SND_ASYNC);
     cantJres = ingresoJugadores(&jugadores);
     if(cantJres == ERROR_MEM)
         return 1;

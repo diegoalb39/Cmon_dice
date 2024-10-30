@@ -49,3 +49,54 @@
 	"listaDinamica/listaDinamica.h"
 	"curl/TP.h"
 
+1730320011 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.c
+	"colaDinamica.h"
+
+1730320011 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\coladinamica\coladinamica.h
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	"../nodo.h"
+
+1730320011 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\nodo.h
+
+1730320011 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\curl\tp.c
+	"TP.h"
+
+1730320011 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\curl\tp.h
+	<curl/curl.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+
+1730329693 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\funciones.c
+	"funciones.h"
+
+1730326539 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\funciones.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	<locale.h>
+	<windows.h>
+	<process.h>
+	"colaDinamica/colaDinamica.h"
+	"listaDinamica/listaDinamica.h"
+	"curl/TP.h"
+	<mmsystem.h>
+
+1730320011 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.h
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	<time.h>
+	"../nodo.h"
+
+1730320011 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.c
+	"listaDinamica.h"
+
+1730328787 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\main.c
+	"funciones.h"
+

@@ -269,6 +269,7 @@ void mostrarSecuencia(char const* secuencia, int cantTiempoSec)
     while(*(secuencia+i) != '\0')
     {
         printf("%c", *(secuencia+i));
+        cambiarColorFondo(*(secuencia+i));
         i++;
         Sleep(1000);
     }
@@ -286,6 +287,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
     if(*pVidas == 0)
     {
         printf("No tiene mas vidas para utilizar\n\n");
+        PlaySoundA("multimedia\\game_over.wav",NULL,SND_ASYNC);
         system("pause");
         perdio = 1;
         return 0;
@@ -450,7 +452,7 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
         crearCola(&infoRoundsJugador);
         secuencia.tamcontenido = 0;
         obtener_secuencia(&curl, &secuencia);
-
+        PlaySoundA(NULL, 0, 0);
         system("cls");
         printf("Turno del jugador %s", jugador);
         Sleep(2000);
@@ -513,6 +515,7 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
                     }
 
                 ronda++;
+                PlaySoundA("multimedia\\next_round.wav",NULL,SND_ASYNC);
             }
             else
                 infoRound.punt = 0;

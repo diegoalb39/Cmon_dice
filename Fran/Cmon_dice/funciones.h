@@ -12,9 +12,11 @@
 #include "colaDinamica/colaDinamica.h"
 #include "listaDinamica/listaDinamica.h"
 #include "curl/TP.h"
+#include <mmsystem.h>
 
 #define esNivelValido(a)((a) == 'F' || (a) == 'M' || (a) == 'D')
 #define enRango(num,limInf,limSup)((num)>=(limInf) && (num)<=(limSup))
+#define cambiarColorFondo(c) ((c)=='A' ? system("color 17") : ((c)=='V' ? system("color 27") : ((c)=='R' ? system("color 47") : system("color 67"))))
 
 #define NOM_ARCH_CONF "config.txt"
 
