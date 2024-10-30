@@ -29,9 +29,11 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 	“include"
 	En Codeblocks: Settings > Compiler > Search directories > Linker: agregar ubicación a “lib”
 Compila el proyecto y ejecútalo.
-## Ejecutando las pruebas ⚙️
+## Ejecutando ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+Ejecute el proyecto y siga las instrucciones del juego para jugar. 
+Ingrese el nombre d elos jugadores, la dificultad y cuando este listo presione 'Y' para comenzar.
+Las letras deben ingresarse 1 a 1, (ej: secuencia AR: respuesta A, enter, R, enter).
 
 ### Analice las pruebas end-to-end 🔩
 
