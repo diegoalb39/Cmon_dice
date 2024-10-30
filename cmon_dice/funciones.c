@@ -140,10 +140,12 @@ void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
     FILE* archInf = fopen(nom, "wt");
     if(!archInf)
         return;
-
-    printf("Mejor Puntaje de la partida: %d \nGanador/es de la partida: ", *puntMax);
+    fprintf(archInf, "************RESUMEN DE LA PARTIDA***********\n");
+    printf("*******MEJOR PUNTAJE DE LA PARTIDA: %d*******\n***********GANADORES DE LA PARTIDA***********\n", *puntMax);
     recorrer_listas_iguales_paralelo(jug, rondas, accion_mostrar, puntMax, archInf);
-
+    printf("****************FIN DEL JUEGO****************");
+    printf("\n\nSe ha generado un informe de la partida en el archivo: '%s'\n", nom);
+    fprintf(archInf, "**************FIN DEL INFORME**************");
     vaciarlista(jug);
     vaciarlista(rondas);
 
@@ -168,7 +170,7 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf)
     while(!colaVacia(&colaRounds))
     {
         sacarDeCola(&colaRounds, &ronda, sizeof(t_round));
-        fprintf(arch, "Round: %d\nSecuencia: %s\nRespuesta: %s\nVidas usadas: %d\nPuntos obtenidos: %d\n",
+        fprintf(arch, "******************ROUND %d*******************\nSecuencia: %s\nRespuesta: %s\nVidas usadas: %d\nPuntos obtenidos: %d\n",
                 round, ronda.secuencia, ronda.respuesta, ronda.vidas_usadas, ronda.puntos);
         round++;
         total+=ronda.puntos;
@@ -177,7 +179,7 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf)
     }
     if(*(int*)p == total)
     {
-        printf("%s ", nom);
+        printf("%s\n", nom);
         fprintf(arch, "\nEl jugador %s gano la partida!", nom);
     }
     fprintf(arch, "\nPuntos totales obtenidos por %s: %d\n\n\n", nom, total);

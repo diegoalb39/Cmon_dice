@@ -1,0 +1,53 @@
+************RESUMEN DE LA PARTIDA***********
+Nombre de jugador: jugador1
+******************ROUND 1*******************
+Secuencia: Q
+Respuesta: Q
+Vidas usadas: 2
+Puntos obtenidos: 0
+******************ROUND 2*******************
+Secuencia: QW
+Respuesta: Q
+Vidas usadas: 2
+Puntos obtenidos: 0
+******************ROUND 3*******************
+Secuencia: QWE
+Respuesta: QW
+Vidas usadas: 2
+Puntos obtenidos: 50
+******************ROUND 4*******************
+Secuencia: QWER
+Respuesta: QE
+Vidas usadas: 2
+Puntos obtenidos: 0
+
+El jugador jugador1 gano la partida!
+Puntos totales obtenidos por jugador1: 50
+
+
+Nombre de jugador: jugador2
+******************ROUND 1*******************
+Secuencia: R
+Respuesta: QWE
+Vidas usadas: 2
+Puntos obtenidos: 1
+******************ROUND 2*******************
+Secuencia: RE
+Respuesta: QRE
+Vidas usadas: 2
+Puntos obtenidos: 1
+******************ROUND 3*******************
+Secuencia: REW
+Respuesta: QTW
+Vidas usadas: 2
+Puntos obtenidos: 5
+******************ROUND 4*******************
+Secuencia: REWQ
+Respuesta: QQQQ
+Vidas usadas: 2
+Puntos obtenidos: 1
+
+Puntos totales obtenidos por jugador2: 8
+
+
+**************FIN DEL INFORME**************
