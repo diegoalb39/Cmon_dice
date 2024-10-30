@@ -104,19 +104,20 @@ int obtener_secuencia(CURL**curl, t_contenedor*contenedor)
         {
             //curl_easy_strerror devuelve un string que describe el codigo de error enviado como parametro
             //stderr es la salida directa a consola
-            fprintf(stderr, "//Error en la solicitud: %s//\n", curl_easy_strerror(respuesta));
             error = 'Y';
         }
         else if(pl)
         {
-            puts("//Error en servidor.//");
             error = 'Y';
-            free(contenedor->cadena_datos);
-            contenedor->tamcontenido = 0;
+            contenedor->tamcontenido = contenedor->tamcontenido - strlen(pl);
+            *pl = '\0';
         }
 
         if('Y' == error)//en caso de error...
-            Sleep(1000);//...espero 1s antes de volver a hacer un pedido
+        {
+            printf("\n\n Error al solicitar secuencia. Espere...");
+            Sleep(2000);//...espero 1s antes de volver a hacer un pedido
+        }
 
     }while('Y' == error);
     ////while: hubo error en respuesta o hubo error por sobrecarga de servidor (string recibido tiene "Error:")
