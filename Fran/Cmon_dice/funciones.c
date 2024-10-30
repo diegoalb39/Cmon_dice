@@ -62,7 +62,7 @@ int ingresoJugadores(t_lista* jugadores)
             return ERROR_MEM;
         if(ret == DUPLICADO)
         {
-            printf("El jugador %s ya habia sido ingresado\n", jugador);
+            printf("El jugador %s ya había sido ingresado\n", jugador);
             system("pause");
         }
         else
@@ -71,17 +71,17 @@ int ingresoJugadores(t_lista* jugadores)
         printf("\n");
         system("cls");
         mostrarJugadores(jugadores);
-        printf("\u00a8Desea ingresar otro jugador? Y/N\n");
+        printf("¿Desea ingresar otro jugador? Y/N\n");
         fflush(stdin);
         scanf("%c", &opc);
         opc = toupper(opc);
         while(opc != 'Y' && opc != 'N')
         {
-            printf("\nOpcion invalida\n\n");
+            printf("\nOpción inválida\n\n");
             system("pause");
             system("cls");
             mostrarJugadores(jugadores);
-            printf("\u00a8Desea ingresar otro jugador? [Y/N]\n");
+            printf("¿Desea ingresar otro jugador? [Y/N]\n");
             fflush(stdin);
             scanf("%c", &opc);
         }
@@ -110,7 +110,7 @@ int leerConf(const char* archConf, t_conf* varConf)
         varConf->nivel = toupper(varConf->nivel);
         if(varConf->nivel != 'F' && varConf->nivel != 'M' && varConf->nivel != 'D')
         {
-            printf("\n\nLa opcion elegida no es valida");
+            printf("\n\nLa opción elegida no es valida");
             system("pause");
             system("cls");
         }
@@ -128,14 +128,14 @@ int leerConf(const char* archConf, t_conf* varConf)
            sscanf(cad, "%c|%d|%d|%d", &auxConf.nivel, &auxConf.cantTiempoSec, &auxConf.cantTiempoResp, &auxConf.cantVidas))
         {
             fclose(pf);
-            printf("Error en la lectura del arch de configuracion: formato invalido");
+            printf("Error en la lectura del archivo de configuración: formato invalido");
             return ERROR_ARCH;
         }
 
         if(!esNivelValido(auxConf.nivel) || !enRango(auxConf.cantTiempoSec,1,20) || !enRango(auxConf.cantTiempoResp,1,20) || !enRango(auxConf.cantVidas,0,5))
         {
             fclose(pf);
-            printf("Error en la lectura del arch de configuracion: formato invalido");
+            printf("Error en la lectura del archivo de configuración: formato invalido");
             return ERROR_ARCH;
         }
 
@@ -156,8 +156,8 @@ char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
 
     do{
         mostrarJugadores(jugadores);
-        printf("Se jugara segun el orden de la lista de jugadores\n");
-        printf("\nLa configuracion seleccionada para la partida fue la siguiente:\n\n");
+        printf("Se jugará según el orden de la lista de jugadores\n");
+        printf("\nLa configuración seleccionada para la partida fue la siguiente:\n\n");
         mostrarConf(*conf);
         printf("\n\nTeclas para jugar:\n\n"
                "A - AZUL\n"
@@ -165,13 +165,13 @@ char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
                "R - ROJO\n"
                "N - NARANJA\n"
                "U - USAR VIDAS");
-        printf("\n\n\u00a8Esta listo para comenzar la partida? [Y/N]\n");
+        printf("\n\n¿Está listo para comenzar la partida? [Y/N]\n");
         fflush(stdin);
         scanf("%c", &resp);
         resp = toupper(resp);
         if(resp != 'Y' && resp != 'N')
         {
-            printf("\nOpcion invalida\n\n");
+            printf("\nOpción inválida\n\n");
             system("pause");
             system("cls");
         }
@@ -191,7 +191,7 @@ int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int *cantJres)
     {
         system("cls");
         do{
-            printf("\u00a8Que accion desea realizar antes de comenzar?\n\n"
+            printf("¿Que acción desea realizar antes de comenzar?\n\n"
                    "1 - Agregar jugadores\n"
                    "2 - Cambiar la dificultad\n"
                    "3 - Comenzar\n"
@@ -200,7 +200,7 @@ int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int *cantJres)
             scanf("%d", &opc);
             if(opc<1 || opc>4)
             {
-                printf("\nOpcion invalida\n\n");
+                printf("\nOpción inválida\n\n");
                 system("pause");
                 system("cls");
             }
@@ -243,7 +243,7 @@ void timerResp(void* arg)
     if(tiempoResp==0 && continuarTimer)
     {
         system("cls");
-        printf("Se acabo el tiempo. Presione ENTER para continuar...");
+        printf("Se acabó el tiempo. Presione ENTER para continuar...");
     }
 }
 
@@ -294,14 +294,14 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
     do{
         printf("Ronda %d\n\n"
                "Respuesta actual: %s\n\n"
-               "\r\u00a8Cuantas vidas desea utilizar? Vidas disponibles: %d\n", ronda, respuesta, *pVidas);
+               "\r¿Cuantas vidas desea utilizar? Vidas disponibles: %d\n", ronda, respuesta, *pVidas);
         fflush(stdin);
         scanf("%d", &vidasUsadas);
         if(vidasUsadas > *pVidas || vidasUsadas<=0)
         {
             printf("\b\033[A");
             printf("\033[2K");
-            printf("La cantidad de vidas solicitada no es valida\n");
+            printf("La cantidad de vidas solicitada no es válida\n");
             system("pause");
             system("cls");
         }
@@ -312,7 +312,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
     if(vidasUsadas > largoResp)
     {
         *(respuesta) = '\0';
-        printf("La cantidad de vidas utilizadas excede la cantidad de colores ingresados. Se mostrara la secuencia nuevamente...");
+        printf("La cantidad de vidas utilizadas excede la cantidad de colores ingresados. Se mostrará la secuencia nuevamente...");
         vidasUsadas = largoResp+1;
         Sleep(3000);
         system("cls");
@@ -484,7 +484,7 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
                     if(strcmp(infoRound.respuesta, infoRound.secuencia) != 0)
                     {
                         estado = RESP_INCORRECTA;
-                        printf("\n\nLa respuesta es incorrecta\n\n");
+                        printf("\nLa respuesta es incorrecta\n\n");
                         system("pause");
                         infoRound.vidasUsadas += usarVidas(&vidas, infoRound.secuencia, infoRound.respuesta, conf->cantTiempoSec, ronda);
                     }

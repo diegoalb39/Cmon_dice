@@ -6,6 +6,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
+#include <locale.h>
 #include <windows.h>
 #include <process.h>
 #include "colaDinamica/colaDinamica.h"
@@ -65,7 +66,7 @@ int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* pVidas);
 int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, int ronda);
 int extenderSecuencia(t_round* infoRound, t_contenedor* secuencia, CURL** curl);
 void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos);
-//en el informe habra que utilizar free() sobre infoRound.secuencia y respuesta si strlen(infoRound.secuencia) != MAX_SEC
+//en el informe habra que utilizar free() sobre infoRound.secuencia y respuesta
 
 //generar archivo informe
 

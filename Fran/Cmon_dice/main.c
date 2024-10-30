@@ -8,6 +8,11 @@ int main()
     int cantJres;
     int puntMax;
 
+
+    setlocale(LC_ALL, "spanish");
+    SetConsoleCP(1252);
+    SetConsoleOutputCP(1252);
+
     crearLista(&jugadores);
     crearLista(&infoRoundsPorJugador);
     cantJres = ingresoJugadores(&jugadores);
@@ -28,11 +33,14 @@ int main()
     else
     {
         vaciarLista(&jugadores);
+        //esto es codigo de prueba sin la funcion de informe, logicamente habria que liberar cada cola en la lista infoRounds
+        //y la memoria asignada a cada secuencia y respuesta
         vaciarLista(&infoRoundsPorJugador);
         return puntMax;
     }
 
     vaciarLista(&jugadores);
     //esto es codigo de prueba sin la funcion de informe, logicamente habria que liberar cada cola en la lista infoRounds
+    //y la memoria asignada a cada secuencia y respuesta
     vaciarLista(&infoRoundsPorJugador);
 }
