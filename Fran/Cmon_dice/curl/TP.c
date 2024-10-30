@@ -101,11 +101,7 @@ int obtener_secuencia(CURL**curl, t_contenedor*contenedor)
         pl = strstr( (contenedor->cadena_datos), clave );//busco si hubo un mensaje de error en lo recibido
 
         if(respuesta != CURLE_OK)//chequeo si hubo error durante la ejecucion de curl
-        {
-            //curl_easy_strerror devuelve un string que describe el codigo de error enviado como parametro
-            //stderr es la salida directa a consola
             error = 'Y';
-        }
         else if(pl)
         {
             error = 'Y';
@@ -124,86 +120,3 @@ int obtener_secuencia(CURL**curl, t_contenedor*contenedor)
 
     return ALL_OK;
 }
-
-/*int juego_princicipal()
-{
-    t_contenedor secuencia;
-    CURL*curl;//puntero al handle creado
-    char*URL;
-
-    ////Inicializacion de manejo de curl//Dependiendo el diseño del resto del programa, esto podria terminar afuera.
-    curl_global_init(CURL_GLOBAL_DEFAULT);//prepara el area de trabajo para ejecutar funciones curl
-    curl = curl_easy_init();//crea un handle/usuario para la transmision de datos
-
-    if(!curl)
-        return ERROR;
-
-    if( !armado_url(&URL) )
-        return NO_MEMORY;
-
-    printf("-URL: %s\n\n", URL);//linea de prueba
-
-    config_curl(&curl, URL, &secuencia);
-
-    secuencia.tamcontenido = 0;
-    obtener_secuencia(&curl, &secuencia);
-    ////en ejecucion tendria esta forma
-    //while( haya jugadores que falten jugar )
-    //{
-    ////secuencia.tamcontenido = 0;
-
-    ////obtener_secuencia(&curl, &secuencia);
-
-    ////funcion de juego
-
-    ////free( secuencia.cadena_datos );
-    //}
-
-    ////Cierre de operaciones de curl//Dependiendo el diseño del resto del programa, esto podria terminar afuera.
-    curl_easy_cleanup(curl);//cierra y libera todo lo asociado al handle previamente creado
-    curl_global_cleanup();//libera todos los recursos adquiridos por curl_global_inint
-
-    printf("-Secuencia obtenida:\n%s", secuencia.cadena_datos);//linea de prueba
-
-    free(URL);
-    free( secuencia.cadena_datos );
-
-    return 1;
-}*/
-
-/*
-int funcion_general(int dificultad)
-{
-    CURL*curl;//puntero al handle creado
-    char  *URL;
-    t_contenedor contenedor;
-
-    contenedor.tamcontenido = 0;
-
-    armado_url(&URL, dificultad);
-    //printf("%s", URL);
-
-    ////Inicializacion de manejo de curl//Dependiendo el diseño del resto del programa, esto podria terminar afuera.
-    curl_global_init(CURL_GLOBAL_DEFAULT);//prepara el area de trabajo para ejecutar funciones curl
-    curl = curl_easy_init();//crea un handle/usuario para la transmision de datos
-
-    if(!curl)
-        return ERROR;
-
-    config_curl(&curl, URL, &contenedor);
-
-    ejecutar_curl(&curl, &contenedor);
-
-    ////Cierre de operaciones de curl//Dependiendo el diseño del resto del programa, esto podria terminar afuera.
-    curl_easy_cleanup(curl);//cierra y libera todo lo asociado al handle previamente creado
-    curl_global_cleanup();//libera todos los recursos adquiridos por curl_global_inint
-
-    free(URL);
-
-    printf("%s\n", contenedor.cadena_datos);
-
-    free(contenedor.cadena_datos);
-
-    return ALL_OK;
-}
-*/
