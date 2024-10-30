@@ -27,7 +27,7 @@
 #define MAX_LINE_CANT_SECUENCIA 3
 //Constante que determina una linea describiendo la cantidad de numeros a pedir a la API y que sera
 //concatenada para conformar la URL
-#define CANT_SECUENCIA "3"
+#define CANT_SECUENCIA "10"
 
 //Constantes generales
 #define NO_MEMORY 0
