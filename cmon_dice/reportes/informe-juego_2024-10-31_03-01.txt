@@ -1,0 +1,99 @@
+************RESUMEN DE LA PARTIDA***********
+Nombre de jugador: pepe
+******************ROUND 1*******************
+Secuencia: A
+Respuesta: A
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 2*******************
+Secuencia: AN
+Respuesta: AN
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 3*******************
+Secuencia: ANV
+Respuesta: ANV
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 4*******************
+Secuencia: ANVV
+Respuesta: ANVV
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 5*******************
+Secuencia: ANVVR
+Respuesta: ANVVR
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 6*******************
+Secuencia: ANVVRV
+Respuesta: ANVVRV
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 7*******************
+Secuencia: ANVVRVN
+Respuesta: ANVVRVN
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 8*******************
+Secuencia: ANVVRVNV
+Respuesta: ANVVRVNV
+Vidas usadas: 0
+Puntos obtenidos: 3
+
+Puntos totales obtenidos por pepe: 24
+
+
+Nombre de jugador: maxi
+******************ROUND 1*******************
+Secuencia: R
+Respuesta: R
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 2*******************
+Secuencia: RA
+Respuesta: RA
+Vidas usadas: 0
+Puntos obtenidos: 3
+
+Puntos totales obtenidos por maxi: 6
+
+
+Nombre de jugador: juan
+******************ROUND 1*******************
+Secuencia: V
+Respuesta: V
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 2*******************
+Secuencia: VA
+Respuesta: VA
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 3*******************
+Secuencia: VAN
+Respuesta: VAN
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 4*******************
+Secuencia: VANN
+Respuesta: VANN
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 5*******************
+Secuencia: VANNA
+Respuesta: VANNA
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 6*******************
+Secuencia: VANNAV
+Respuesta: VANNAV
+Vidas usadas: 0
+Puntos obtenidos: 3
+
+Puntos totales obtenidos por juan: 18
+
+
+*********GANADORES DE LA PARTIDA***********
+pepe
+**************FIN DEL INFORME**************
