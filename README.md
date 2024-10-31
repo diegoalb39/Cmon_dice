@@ -86,6 +86,10 @@ Dificultad elegida: Media. Tiempo que se muestra la secuencia por pantalla: 5
 segundos. Cantidad de tiempo que tiene la persona para contestar: 10
 segundos. Cantidad de vidas: 1.
 
+##Casos de prueba
+![image](https://github.com/user-attachments/assets/b7101405-06ca-423a-ba65-691eebccc58a)
+
+
 ## Construido con 🛠️
 
 Mucho esfuerzo y amor. Codigo en lenguaje C, libreria cURL para trabajar con la API y asincronismo para manejo del tiempo en segundos reales
