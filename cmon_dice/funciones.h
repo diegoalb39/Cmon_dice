@@ -20,6 +20,8 @@
 
 #define NOM_ARCH_CONF "config.txt"
 
+#define MSJ_MENU_INICIAL "///CMON DICE///\n\n[A] Jugar\n[B] Salir\n\nIngrese opcion: "
+
 #define TAM_SEC_INI 10
 #define MAX_NOM 41
 #define CAMPOS_ARCH_CONF 4
@@ -52,6 +54,7 @@ typedef struct
     int cantVidas;
 }t_conf;
 
+int menuInicial();
 int ingresoJugadores(t_lista* jugadores);
 void mostrarJugadores(t_lista* jugadores);
 int leerConf(const char* archConf, t_conf* varConf);
