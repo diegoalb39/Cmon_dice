@@ -8,7 +8,7 @@
 	<memory.h>
 	"../nodo.h"
 
-1730328986 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.c
+1730335472 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.c
 	"funciones.h"
 
 1730325055 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.c
@@ -24,7 +24,7 @@
 1730325055 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\main.c
 	"funciones.h"
 
-1730325055 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\curl\tp.c
+1730331255 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\curl\tp.c
 	"TP.h"
 
 1730331255 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\curl\tp.h
@@ -36,7 +36,7 @@
 
 1730325055 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\nodo.h
 
-1730329243 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.h
+1730335472 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\fran\cmon_dice\funciones.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>

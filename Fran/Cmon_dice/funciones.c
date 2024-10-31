@@ -91,6 +91,7 @@ int ingresoJugadores(t_lista* jugadores)
 int leerConf(const char* archConf, t_conf* varConf)
 {
     char *auxChar, cad[11];
+    int cantRegistros = 0;
     t_conf auxConf;
     FILE* pf= fopen(archConf, "rt");
     if(!pf)
@@ -114,9 +115,9 @@ int leerConf(const char* archConf, t_conf* varConf)
     }while(varConf->nivel != 'F' && varConf->nivel != 'M' && varConf->nivel != 'D');
 
     system("cls");
-    auxConf.cantTiempoResp = 0; //para verificar que no esta vacio
     while(fgets(cad, sizeof(cad), pf))
     {
+        cantRegistros++;
         auxChar= strchr(cad, '\n');
         if(auxChar)
             *auxChar= '\0';
@@ -141,8 +142,11 @@ int leerConf(const char* archConf, t_conf* varConf)
     }
 
     fclose(pf);
-    if(auxConf.cantTiempoResp == 0)
+    if(cantRegistros != CANT_DIFS)
+    {
+        printf("Error en la lectura del archivo de configuración: formato invalido");
         return ERROR_ARCH;
+    }
     else
         return TODO_OK;
 }
