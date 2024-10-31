@@ -17,9 +17,15 @@ int main()
     PlaySoundA("multimedia\\menu.wav",NULL,SND_LOOP | SND_ASYNC);
     cantJres = ingresoJugadores(&jugadores);
     if(cantJres == ERROR_MEM)
+    {
+        vaciarLista(&jugadores);
         return 1;
+    }
     if(leerConf(NOM_ARCH_CONF, &conf)!= TODO_OK)
+    {
+        vaciarLista(&jugadores);
         return 1;
+    }
     desordenarLista(&jugadores, cantJres);
     if(wrapper_mostrarInfoPartida(&jugadores, &conf, &cantJres) != TODO_OK)
     {
@@ -27,17 +33,13 @@ int main()
         return 1;
     }
     puntMax = jugar(&jugadores, &infoRoundsPorJugador, &conf, cantJres);
-    system("cls");
-    if(puntMax >=0)
-        mostrar_y_generar_informe(&jugadores, &infoRoundsPorJugador, &puntMax, accion_mostrar);
-    else
-    {
+    if(puntMax < 0){
         vaciarLista(&jugadores);
-        vaciarLista(&infoRoundsPorJugador);
+        liberarInfoRounds(&infoRoundsPorJugador);
         return puntMax;
     }
-
+    mostrar_y_generar_informe(&jugadores, &infoRoundsPorJugador, &puntMax, accion_mostrar);
     vaciarLista(&jugadores);
-    vaciarLista(&infoRoundsPorJugador);
+    liberarInfoRounds(&infoRoundsPorJugador);
     return 0;
 }

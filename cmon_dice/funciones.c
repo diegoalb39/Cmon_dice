@@ -531,6 +531,20 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
     return puntMax;
 }
 
+void liberarInfoRounds(t_lista* infoRoundsPorJugador)
+{
+    t_cola infoRoundsJugador;
+    t_round auxRound;
+    while(sacarPrimeroDeLista(infoRoundsPorJugador, &infoRoundsJugador, sizeof(t_cola)) != LISTA_VACIA)
+    {
+        while(sacarDeCola(&infoRoundsJugador, &auxRound, sizeof(t_round)) != COLA_VACIA)
+        {
+            free(auxRound.secuencia);
+            free(auxRound.respuesta);
+        }
+    }
+}
+
 void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
                                void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc))
 {
@@ -603,4 +617,5 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc)
         printf("NO HAY GANADORES!\n");
     fprintf(arch, "\nPuntos totales obtenidos por %s: %d\n\n\n", nom, total);
 }
+
 

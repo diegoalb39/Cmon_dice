@@ -5,6 +5,11 @@ void crearLista(t_lista* pl)
     *pl=NULL;
 }
 
+int listaVacia(t_lista* pl)
+{
+    return *pl == NULL;
+}
+
 int insertarAlFinal(t_lista* pl, const void* dato, unsigned tam)
 {
     while(*pl)
@@ -60,6 +65,19 @@ void recorrerLista(t_lista* pl, Accion accion)
         accion((*pl)->info);
         pl = &(*pl)->sig;
     }
+}
+
+int sacarPrimeroDeLista(t_lista* pl, void* dato, unsigned tam)
+{
+    t_nodo* elim;
+    if(!(*pl))
+        return LISTA_VACIA;
+    elim = *pl;
+    memcpy(dato, elim->info, minimo(tam, elim->tam));
+    *pl = elim->sig;
+    free(elim->info);
+    free(elim);
+    return TODO_OK;
 }
 
 int sacarDeListaOrd(t_lista* pl, void* clave, unsigned tam, Cmp funCmp)

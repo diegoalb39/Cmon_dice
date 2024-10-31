@@ -64,7 +64,7 @@ int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* pVidas);
 int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, int ronda);
 int extenderSecuencia(t_round* infoRound, t_contenedor* secuencia, CURL** curl);
 void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos);
-
+void liberarInfoRounds(t_lista* infoRoundsPorJugador);
 void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
                                void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc));
 void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc);
