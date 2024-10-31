@@ -14,6 +14,22 @@ void mostrarJug(const void *e)
     printf("%s\n", ((char*)e));
 }
 
+int menuInicial(const char *msj)
+{
+    char opc;
+    int priVez = 1;
+    do{
+        system("cls");
+        printf("%s\n%s", priVez ? priVez = 0, "" : "-----OPCION INVALIDA-----", msj);
+        fflush(stdin);
+        scanf("%c", &opc);
+        opc = toupper(opc);
+    }while((opc<'A') || (opc>'B'));
+    if(opc == 'B')
+        return SALIR;
+    return opc;
+}
+
 void mostrarConf(t_conf conf)
 {
     printf("Nivel de dificultad: %c\n"

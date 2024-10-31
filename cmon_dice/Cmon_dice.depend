@@ -100,31 +100,31 @@
 1730342202 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\main.c
 	"funciones.h"
 
-1730348348 source:c:\users\user\documents\github\cmon_dice\cmon_dice\coladinamica\coladinamica.c
+1730350837 source:c:\users\user\documents\github\cmon_dice\cmon_dice\coladinamica\coladinamica.c
 	"colaDinamica.h"
 
-1730348348 c:\users\user\documents\github\cmon_dice\cmon_dice\coladinamica\coladinamica.h
+1730350837 c:\users\user\documents\github\cmon_dice\cmon_dice\coladinamica\coladinamica.h
 	<stdio.h>
 	<stdlib.h>
 	<memory.h>
 	"../nodo.h"
 
-1730348348 c:\users\user\documents\github\cmon_dice\cmon_dice\nodo.h
+1730350837 c:\users\user\documents\github\cmon_dice\cmon_dice\nodo.h
 
-1730348348 source:c:\users\user\documents\github\cmon_dice\cmon_dice\curl\tp.c
+1730350837 source:c:\users\user\documents\github\cmon_dice\cmon_dice\curl\tp.c
 	"TP.h"
 
-1730348348 c:\users\user\documents\github\cmon_dice\cmon_dice\curl\tp.h
+1730350837 c:\users\user\documents\github\cmon_dice\cmon_dice\curl\tp.h
 	<curl/curl.h>
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 
-1730348888 source:c:\users\user\documents\github\cmon_dice\cmon_dice\funciones.c
+1730352160 source:c:\users\user\documents\github\cmon_dice\cmon_dice\funciones.c
 	"funciones.h"
 
-1730348888 c:\users\user\documents\github\cmon_dice\cmon_dice\funciones.h
+1730352023 c:\users\user\documents\github\cmon_dice\cmon_dice\funciones.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -138,16 +138,16 @@
 	"listaDinamica/listaDinamica.h"
 	"curl/TP.h"
 
-1730348888 c:\users\user\documents\github\cmon_dice\cmon_dice\listadinamica\listadinamica.h
+1730350837 c:\users\user\documents\github\cmon_dice\cmon_dice\listadinamica\listadinamica.h
 	<stdio.h>
 	<stdlib.h>
 	<memory.h>
 	<time.h>
 	"../nodo.h"
 
-1730348888 source:c:\users\user\documents\github\cmon_dice\cmon_dice\listadinamica\listadinamica.c
+1730350837 source:c:\users\user\documents\github\cmon_dice\cmon_dice\listadinamica\listadinamica.c
 	"listaDinamica.h"
 
-1730348888 source:c:\users\user\documents\github\cmon_dice\cmon_dice\main.c
+1730352160 source:c:\users\user\documents\github\cmon_dice\cmon_dice\main.c
 	"funciones.h"
 
