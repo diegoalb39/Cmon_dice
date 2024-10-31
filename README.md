@@ -65,35 +65,26 @@ Los puntos de cada jugador de la siguiente manera:
 - Por cada secuencia bien ingresada, sin usar vida, se recibe +3 puntos
 - Por cada secuencia bien ingresada, pero usando vida, se recibe +1
 punto.
- Ganará la persona con mayor cantidad de puntos. En caso de que hayan 2
-personas con la mayor cantidad de puntos (ejemplo: Jugador 1 y jugador 3
-hicieron 10 puntos cada uno, mientras que el jugador 2 hizo 7 puntos),
-entonces el jugador 1 y 3 serán los ganadores.
 
 Nota 1: Los niveles de dificultad son:
 - Fácil
 - Medio
 - Difícil
-Estos niveles de dificultad son configurables mediante un archivo txt.
+
+Estos niveles de dificultad son configurables mediante un archivo txt. Puede entrar al archivo y modificar la dificultad RESPETANDO EL FORMATO DE LOS MISMOS. Sabiendo que: la cantidad de vidas no excederá de 5 y los tiempos para jugar no seran superiores a 20 segundos, tanto para mostrar por pantalla como para responder.
+
 Ejemplo:
 Dificultad elegida: Media. Tiempo que se muestra la secuencia por pantalla: 5
 segundos. Cantidad de tiempo que tiene la persona para contestar: 10
-segundos. Cantidad de vidas: 1
-### Analice las pruebas end-to-end 🔩
+segundos. Cantidad de vidas: 1.
 
-_Explica que verifican estas pruebas y por qué_
+Si desea utilizar vidas porque se equivocó en el ingreso de una letra, podrá ingresar la letra "U" para utilizar vidas y deshacer los movimientos que desee sgun las vidas restantes.
 
-```
-Da un ejemplo
-```
+Ganará la persona con mayor cantidad de puntos. En caso de que hayan 2
+personas con la mayor cantidad de puntos (ejemplo: Jugador 1 y jugador 3
+hicieron 10 puntos cada uno, mientras que el jugador 2 hizo 7 puntos),
+entonces el jugador 1 y 3 serán los ganadores.
 
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
 ## Construido con 🛠️
 
 Mucho esfuerzo y amor. Codigo en lenguaje C, libreria cURL para trabajar con la API y asincronismo para manejo del tiempo en segundos reales
