@@ -151,3 +151,54 @@
 1730348888 source:c:\users\user\documents\github\cmon_dice\cmon_dice\main.c
 	"funciones.h"
 
+1730350304 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\coladinamica\coladinamica.c
+	"colaDinamica.h"
+
+1730350304 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\coladinamica\coladinamica.h
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	"../nodo.h"
+
+1730350304 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\nodo.h
+
+1730350304 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\curl\tp.c
+	"TP.h"
+
+1730350304 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\curl\tp.h
+	<curl/curl.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+
+1730356304 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\funciones.c
+	"funciones.h"
+
+1730356454 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\funciones.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<time.h>
+	<locale.h>
+	<windows.h>
+	<process.h>
+	<mmsystem.h>
+	"colaDinamica/colaDinamica.h"
+	"listaDinamica/listaDinamica.h"
+	"curl/TP.h"
+
+1730354251 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\listadinamica\listadinamica.h
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	<time.h>
+	"../nodo.h"
+
+1730354259 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\listadinamica\listadinamica.c
+	"listaDinamica.h"
+
+1730356316 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\main.c
+	"funciones.h"
+

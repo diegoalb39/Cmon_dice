@@ -26,9 +26,10 @@
 #define CANT_DIFS 3
 
 #define ERROR_ARCH -1
-#define ERROR_MEM -1
-#define ERROR_CURL -2
-#define ERROR_THREAD -3
+#define ERROR_MEM -2
+#define ERROR_CURL -3
+#define ERROR_THREAD -4
+#define ERROR_ARCH_FORMAT -5
 
 #define SALIR 1
 #define RESP_COMPLETA 1
@@ -65,8 +66,9 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
 int extenderSecuencia(t_round* infoRound, t_contenedor* secuencia, CURL** curl);
 void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos);
 void liberarInfoRounds(t_lista* infoRoundsPorJugador);
-void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
+int mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
                                void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc));
 void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc);
+void mostrarError(int cod);
 
 #endif // FUNCIONES_H_INCLUDED

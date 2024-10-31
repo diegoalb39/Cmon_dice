@@ -126,15 +126,13 @@ int leerConf(const char* archConf, t_conf* varConf)
            sscanf(cad, "%c|%d|%d|%d", &auxConf.nivel, &auxConf.cantTiempoSec, &auxConf.cantTiempoResp, &auxConf.cantVidas))
         {
             fclose(pf);
-            printf("Error en la lectura del archivo de configuración: formato invalido\n");
-            return ERROR_ARCH;
+            return ERROR_ARCH_FORMAT;
         }
 
         if(!esNivelValido(auxConf.nivel) || !enRango(auxConf.cantTiempoSec,1,20) || !enRango(auxConf.cantTiempoResp,1,20) || !enRango(auxConf.cantVidas,0,5))
         {
             fclose(pf);
-            printf("Error en la lectura del archivo de configuración: formato invalido\n");
-            return ERROR_ARCH;
+            return ERROR_ARCH_FORMAT;
         }
 
         if(auxConf.nivel == varConf->nivel)
@@ -545,7 +543,7 @@ void liberarInfoRounds(t_lista* infoRoundsPorJugador)
     }
 }
 
-void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
+int mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
                                void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc))
 {
     //genero nombre de archivo con fecha y hora actuales
@@ -565,7 +563,7 @@ void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
 
     FILE* archInf = fopen(ruta, "wt");
     if(!archInf)
-        return;
+        return ERROR_ARCH;
     fprintf(archInf, "************RESUMEN DE LA PARTIDA***********\n");
     printf("*******MEJOR PUNTAJE DE LA PARTIDA: %d*******\n***********GANADORES DE LA PARTIDA***********\n", *puntMax);
     recorrer_listas_iguales_paralelo(jug, rondas, accion_mostrar, puntMax, archInf, &colaGanadores);
@@ -582,6 +580,8 @@ void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
 
     vaciarCola(&colaGanadores);
     fclose(archInf);
+
+    return TODO_OK;
 }
 
 //p: puntaje max, pf: ptr file
@@ -618,4 +618,16 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc)
     fprintf(arch, "\nPuntos totales obtenidos por %s: %d\n\n\n", nom, total);
 }
 
+void mostrarError(int cod)
+{
+    printf("Error: ");
+    switch(cod)
+    {
+        case -1: printf("Error al abrir un archivo\n");break;
+        case -2: printf("Se agotó la memoria\n");break;
+        case -3: printf("No se pudo configurar la API\n");break;
+        case -4: printf("Error al inicializar el temporizador\n");
+        case -5: printf("Error en la lectura del archivo de configuración: formato invalido\n");
+    }
+}
 
