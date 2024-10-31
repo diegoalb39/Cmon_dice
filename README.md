@@ -35,9 +35,50 @@ Compila el proyecto y ejecútalo.
 ## Ejecutando ⚙️
 
 Ejecute el proyecto y siga las instrucciones del juego para jugar. 
-Ingrese el nombre d elos jugadores, la dificultad y cuando este listo presione 'Y' para comenzar.
-Las letras deben ingresarse 1 a 1 (ej: secuencia AR: respuesta A, enter, R, enter, y asi con todas las letra que tenga).
+Al inicio de cada juego, se va a:
+- Ingresar los nombres de los jugadores
+- Elegir la dificultad (fácil, medio, difícil)
+- Sortear el orden de los jugadores
+- Mostrar las configuraciones del juego (cantidad de vidas para cada
+participante, cantidad de segundos en los que tienen que ingresar la
+secuencia, cantidad de tiempo que van a poder ver la secuencia)
+Luego:
+- Empieza el primer jugador sorteado
+- El sistema le muestra la primera secuencia al jugador durante X tiempo,
+una letra a la vez.
+- El jugador tiene Y segundos para ingresar la secuencia, letra por letra.
+Cualquier otro caracter ingresado será ignorado a menos que sea el
+de usar las vidas
+- Si se le acaba el tiempo y no contesta, automáticamente se indicará que
+el tiempo finalizó. Si tiene una vida, puede volver para atrás N cantidad
+de jugadas (según vidas tenga) y tiene un segundo intento. Si no tiene
+vidas, el juego finaliza para esa persona y le toca al siguiente
+participante.
+- Si ingresa correctamente la secuencia, el programa le muestra al
+jugador la siguiente secuencia
+- Si ingresa la secuencia, pero es incorrecta, el programa le va a indicar
+que puede deshacer los últimos movimientos, según la cantidad de vidas
+que tenga.
+- Por cada round se van sumando puntos, y el jugador que obtenga la
+mayor cantidad de puntos es el ganador.
+Los puntos de cada jugador de la siguiente manera:
+- Por cada secuencia bien ingresada, sin usar vida, se recibe +3 puntos
+- Por cada secuencia bien ingresada, pero usando vida, se recibe +1
+punto.
+ Ganará la persona con mayor cantidad de puntos. En caso de que hayan 2
+personas con la mayor cantidad de puntos (ejemplo: Jugador 1 y jugador 3
+hicieron 10 puntos cada uno, mientras que el jugador 2 hizo 7 puntos),
+entonces el jugador 1 y 3 serán los ganadores.
 
+Nota 1: Los niveles de dificultad son:
+- Fácil
+- Medio
+- Difícil
+Estos niveles de dificultad son configurables mediante un archivo txt.
+Ejemplo:
+Dificultad elegida: Media. Tiempo que se muestra la secuencia por pantalla: 5
+segundos. Cantidad de tiempo que tiene la persona para contestar: 10
+segundos. Cantidad de vidas: 1
 ### Analice las pruebas end-to-end 🔩
 
 _Explica que verifican estas pruebas y por qué_
