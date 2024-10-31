@@ -587,11 +587,13 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc)
         free(ronda.secuencia);
         free(ronda.respuesta);
     }
-    if(*(int*)p == total)
+    if(*(int*)p == total && total>0)
     {
         printf("%s\n", nom);
         ponerEnCola((t_cola*)pc, nom, MAX_NOM);
     }
+    else
+        printf("NO HAY GANADORES!\n");
     fprintf(arch, "\nPuntos totales obtenidos por %s: %d\n\n\n", nom, total);
 }
 
