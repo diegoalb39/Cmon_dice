@@ -28,8 +28,9 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 	compiler: agregar ubicación a
 	“include"
 	En Codeblocks: Settings > Compiler > Search directories > Linker: agregar ubicación a “lib”
-Para las funciones multimedia debe colocar el archivo "WinMM.Lib", que se encuentra en la carpeta multimedia, en:
-Settings > Compiler > Linker Settings.
+### Para las funciones multimedia
+	Debe colocar el archivo "WinMM.Lib", que se encuentra en la carpeta multimedia, en: 
+ 	Settings > Compiler > Linker Settings.
 
 Compila el proyecto y ejecútalo.
 ## Ejecutando ⚙️
