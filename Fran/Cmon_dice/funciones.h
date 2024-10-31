@@ -21,7 +21,7 @@
 #define NOM_ARCH_CONF "config.txt"
 
 #define TAM_SEC_INI 10
-#define MAX_NOM 31
+#define MAX_NOM 41
 #define CAMPOS_ARCH_CONF 4
 
 #define ERROR_ARCH -1

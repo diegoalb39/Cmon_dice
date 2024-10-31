@@ -531,18 +531,20 @@ void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
 {
     //genero nombre de archivo con fecha y hora actuales
     char fecha[70];
-    char nom[]="informe-juego_";
+    char ruta[MAX_NOM]="reportes\\";
+    char nom[MAX_NOM]="informe-juego_";
     time_t tiempoAct = time(NULL);
     struct tm tLocal = *localtime(&tiempoAct);
     strftime(fecha, sizeof(fecha), "%Y-%m-%d_%H-%M", &tLocal);
     strcat(nom, fecha);
     strcat(nom, ".txt");
+    strcat(ruta, nom);
 
     char buffer[MAX_NOM];
     t_cola colaGanadores;
     crearCola(&colaGanadores);
 
-    FILE* archInf = fopen(nom, "wt");
+    FILE* archInf = fopen(ruta, "wt");
     if(!archInf)
         return;
     fprintf(archInf, "************RESUMEN DE LA PARTIDA***********\n");

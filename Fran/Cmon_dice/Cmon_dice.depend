@@ -60,20 +60,20 @@
 
 1730320011 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\nodo.h
 
-1730320011 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\curl\tp.c
+1730336745 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\curl\tp.c
 	"TP.h"
 
-1730320011 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\curl\tp.h
+1730336745 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\curl\tp.h
 	<curl/curl.h>
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 
-1730329693 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\funciones.c
+1730341305 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\funciones.c
 	"funciones.h"
 
-1730326539 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\funciones.h
+1730341062 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\funciones.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -87,16 +87,16 @@
 	"curl/TP.h"
 	<mmsystem.h>
 
-1730320011 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.h
+1730339863 c:\users\user\documents\github\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.h
 	<stdio.h>
 	<stdlib.h>
 	<memory.h>
 	<time.h>
 	"../nodo.h"
 
-1730320011 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.c
+1730339863 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\listadinamica\listadinamica.c
 	"listaDinamica.h"
 
-1730328787 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\main.c
+1730336745 source:c:\users\user\documents\github\cmon_dice\fran\cmon_dice\main.c
 	"funciones.h"
 
