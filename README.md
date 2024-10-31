@@ -89,8 +89,7 @@ segundos. Cantidad de vidas: 1.
 
 ## Construido con 🛠️
 
-Mucho esfuerzo y amor. Codigo en lenguaje C, libreria cURL para trabajar con la API y asincronismo para manejo del tiempo en segundos reales
-(no quiero ser redundante especificando lenguaje y cURL otra vez, sino lo dejamos).
+Mucho esfuerzo y amor. Codigo en lenguaje C, libreria cURL para trabajar con la API y asincronismo para manejo del tiempo en segundos reales.
 
 ## Autores ✒️
 Albornoz Diego,Cancian Facundo ,Churquina Diego ,Hidalgo Eduardo ,Parodi Francisco,Villalba Leandro
