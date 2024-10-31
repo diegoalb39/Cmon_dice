@@ -52,6 +52,6 @@ int finIterador(t_lista_it* it);
 
 //agregado
 void recorrer_listas_iguales_paralelo(t_lista* pl1, t_lista* pl2,
-                                    void(*accion)(void* dato1, void* dato2, void* p, void* pf),
-                                    void* p, void* pf);
+                                    void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc),
+                                    void* p, void* pf, void* pc);
 #endif // LISTADINAMICA_H_INCLUDED

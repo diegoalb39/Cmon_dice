@@ -1,0 +1,29 @@
+************RESUMEN DE LA PARTIDA***********
+Nombre de jugador: jugador1
+******************ROUND 1*******************
+Secuencia: V
+Respuesta: V
+Vidas usadas: 0
+Puntos obtenidos: 3
+******************ROUND 2*******************
+Secuencia: VR
+Respuesta: VR
+Vidas usadas: 0
+Puntos obtenidos: 3
+
+Puntos totales obtenidos por jugador1: 6
+
+
+Nombre de jugador: jugador2
+******************ROUND 1*******************
+Secuencia: R
+Respuesta: R
+Vidas usadas: 0
+Puntos obtenidos: 3
+
+Puntos totales obtenidos por jugador2: 3
+
+
+GANADORES DE LA PARTIDA:
+jugador1
+**************FIN DEL INFORME**************

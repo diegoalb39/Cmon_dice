@@ -527,7 +527,7 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
 
 //agregado
 void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
-                               void(*accion)(void* dato1, void* dato2, void* p, void* pf))
+                               void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc))
 {
     //genero nombre de archivo con fecha y hora actuales
     char fecha[70];
@@ -538,29 +538,38 @@ void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
     strcat(nom, fecha);
     strcat(nom, ".txt");
 
+    char buffer[MAX_NOM];
+    t_cola colaGanadores;
+    crearCola(&colaGanadores);
+
     FILE* archInf = fopen(nom, "wt");
     if(!archInf)
         return;
     fprintf(archInf, "************RESUMEN DE LA PARTIDA***********\n");
     printf("*******MEJOR PUNTAJE DE LA PARTIDA: %d*******\n***********GANADORES DE LA PARTIDA***********\n", *puntMax);
-    recorrer_listas_iguales_paralelo(jug, rondas, accion_mostrar, puntMax, archInf);
+    recorrer_listas_iguales_paralelo(jug, rondas, accion_mostrar, puntMax, archInf, &colaGanadores);
     printf("****************FIN DEL JUEGO****************");
     printf("\n\nSe ha generado un informe de la partida en el archivo: '%s'\n", nom);
-    fprintf(archInf, "**************FIN DEL INFORME**************");
-//    vaciarlista(jug);
-//    vaciarlista(rondas);
 
+    fprintf(archInf, "*********GANADORES DE LA PARTIDA***********\n");
+    while(!colaVacia(&colaGanadores))
+    {
+        sacarDeCola(&colaGanadores, buffer, MAX_NOM);
+        fprintf(archInf, "%s\n", buffer);
+    }
+    fprintf(archInf, "**************FIN DEL INFORME**************");
+
+    vaciarCola(&colaGanadores);
     fclose(archInf);
 }
 
 //p: puntaje max, pf: ptr file
 //dato1 : nombre de lista de nombres, dato2: cola de la lista de colas
-void accion_mostrar(void* dato1, void* dato2, void* p, void* pf)
+void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc)
 {
     char nom[MAX_NOM];
     int round=1;
     int total=0;
-
     t_round ronda;
     t_cola colaRounds = *(t_cola*)dato2;
     FILE* arch = (FILE*)pf;
@@ -581,7 +590,7 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf)
     if(*(int*)p == total)
     {
         printf("%s\n", nom);
-        fprintf(arch, "\nEl jugador %s gano la partida!", nom);
+        ponerEnCola((t_cola*)pc, nom, MAX_NOM);
     }
     fprintf(arch, "\nPuntos totales obtenidos por %s: %d\n\n\n", nom, total);
 }
