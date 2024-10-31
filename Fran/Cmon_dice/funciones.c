@@ -62,7 +62,7 @@ int ingresoJugadores(t_lista* jugadores)
             return ERROR_MEM;
         if(ret == DUPLICADO)
         {
-            printf("El jugador %s ya había sido ingresado\n\n", jugador);
+            printf("El jugador %s ya habÃ­a sido ingresado\n\n", jugador);
             system("pause");
         }
         else
@@ -71,13 +71,13 @@ int ingresoJugadores(t_lista* jugadores)
         do{
             system("cls");
             mostrarJugadores(jugadores);
-            printf("¿Desea ingresar otro jugador? [Y/N]\n");
+            printf("Â¿Desea ingresar otro jugador? [Y/N]\n");
             fflush(stdin);
             scanf("%c", &opc);
             opc = toupper(opc);
             if(opc != 'Y' && opc != 'N')
             {
-                printf("\nOpción inválida\n\n");
+                printf("\nOpciÃ³n invÃ¡lida\n\n");
                 system("pause");
             }
         }while(opc != 'Y' && opc != 'N');
@@ -108,7 +108,7 @@ int leerConf(const char* archConf, t_conf* varConf)
         varConf->nivel = toupper(varConf->nivel);
         if(varConf->nivel != 'F' && varConf->nivel != 'M' && varConf->nivel != 'D')
         {
-            printf("\n\nLa opción elegida no es valida");
+            printf("\n\nLa opciÃ³n elegida no es valida");
             system("pause");
             system("cls");
         }
@@ -126,14 +126,14 @@ int leerConf(const char* archConf, t_conf* varConf)
            sscanf(cad, "%c|%d|%d|%d", &auxConf.nivel, &auxConf.cantTiempoSec, &auxConf.cantTiempoResp, &auxConf.cantVidas))
         {
             fclose(pf);
-            printf("Error en la lectura del archivo de configuración: formato invalido\n");
+            printf("Error en la lectura del archivo de configuraciÃ³n: formato invalido\n");
             return ERROR_ARCH;
         }
 
         if(!esNivelValido(auxConf.nivel) || !enRango(auxConf.cantTiempoSec,1,20) || !enRango(auxConf.cantTiempoResp,1,20) || !enRango(auxConf.cantVidas,0,5))
         {
             fclose(pf);
-            printf("Error en la lectura del archivo de configuración: formato invalido\n");
+            printf("Error en la lectura del archivo de configuraciÃ³n: formato invalido\n");
             return ERROR_ARCH;
         }
 
@@ -144,7 +144,7 @@ int leerConf(const char* archConf, t_conf* varConf)
     fclose(pf);
     if(cantRegistros != CANT_DIFS)
     {
-        printf("Error en la lectura del archivo de configuración: formato invalido");
+        printf("Error en la lectura del archivo de configuraciÃ³n: formato invalido");
         return ERROR_ARCH;
     }
     else
@@ -157,8 +157,8 @@ char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
 
     do{
         mostrarJugadores(jugadores);
-        printf("Se jugará según el orden de la lista de jugadores\n");
-        printf("\nLa configuración seleccionada para la partida fue la siguiente:\n\n");
+        printf("Se jugarÃ¡ segÃºn el orden de la lista de jugadores\n");
+        printf("\nLa configuraciÃ³n seleccionada para la partida fue la siguiente:\n\n");
         mostrarConf(*conf);
         printf("\n\nTeclas para jugar:\n\n"
                "A - AZUL\n"
@@ -166,13 +166,13 @@ char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
                "R - ROJO\n"
                "N - NARANJA\n"
                "U - USAR VIDAS");
-        printf("\n\n¿Está listo para comenzar la partida? [Y/N]\n");
+        printf("\n\nÂ¿EstÃ¡ listo para comenzar la partida? [Y/N]\n");
         fflush(stdin);
         scanf("%c", &resp);
         resp = toupper(resp);
         if(resp != 'Y' && resp != 'N')
         {
-            printf("\nOpción inválida\n\n");
+            printf("\nOpciÃ³n invÃ¡lida\n\n");
             system("pause");
             system("cls");
         }
@@ -192,7 +192,7 @@ int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int *cantJres)
     {
         system("cls");
         do{
-            printf("¿Que acción desea realizar antes de comenzar?\n\n"
+            printf("Â¿Que acciÃ³n desea realizar antes de comenzar?\n\n"
                    "1 - Agregar jugadores\n"
                    "2 - Cambiar la dificultad\n"
                    "3 - Comenzar\n"
@@ -201,7 +201,7 @@ int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int *cantJres)
             scanf("%d", &opc);
             if(opc<1 || opc>4)
             {
-                printf("\nOpción inválida\n\n");
+                printf("\nOpciÃ³n invÃ¡lida\n\n");
                 system("pause");
                 system("cls");
             }
@@ -244,7 +244,7 @@ void timerResp(void* arg)
     if(tiempoResp==0 && continuarTimer)
     {
         system("cls");
-        printf("Se acabó el tiempo. Presione ENTER para continuar...\n");
+        printf("Se acabÃ³ el tiempo. Presione ENTER para continuar...\n");
     }
 }
 
@@ -288,7 +288,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
     if(*pVidas == 0)
     {
         printf("No tiene mas vidas para utilizar\n\n");
-        PlaySoundA("multimedia\\game_over.wav",NULL,SND_ASYNC);
+//        PlaySoundA("multimedia\\game_over.wav",NULL,SND_ASYNC);
         system("pause");
         perdio = 1;
         return 0;
@@ -298,7 +298,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
     do{
         printf("Ronda %d\n\n"
                 "Respuesta actual: %s\n\n"
-                "¿Cuantas vidas desea utilizar? Vidas disponibles: %d\n\n"
+                "Â¿Cuantas vidas desea utilizar? Vidas disponibles: %d\n\n"
                 "\rPuede utilizar %d vidas para volver a mostrar la secuencia.\n\n", ronda, respuesta, *pVidas, largoResp + 1);
 
         fflush(stdin);
@@ -307,7 +307,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
         {
             printf("\b\033[1A");
             printf("\033[2K");
-            printf("La cantidad de vidas solicitada no es válida\n\n");
+            printf("La cantidad de vidas solicitada no es vÃ¡lida\n\n");
             system("pause");
             system("cls");
         }
@@ -530,3 +530,76 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
 
     return puntMax;
 }
+
+//agregado
+void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
+                               void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc))
+{
+    //genero nombre de archivo con fecha y hora actuales
+    char fecha[70];
+    char ruta[MAX_NOM]="reportes\\";
+    char nom[MAX_NOM]="informe-juego_";
+    time_t tiempoAct = time(NULL);
+    struct tm tLocal = *localtime(&tiempoAct);
+    strftime(fecha, sizeof(fecha), "%Y-%m-%d_%H-%M", &tLocal);
+    strcat(nom, fecha);
+    strcat(nom, ".txt");
+    strcat(ruta, nom);
+
+    char buffer[MAX_NOM];
+    t_cola colaGanadores;
+    crearCola(&colaGanadores);
+
+    FILE* archInf = fopen(ruta, "wt");
+    if(!archInf)
+        return;
+    fprintf(archInf, "************RESUMEN DE LA PARTIDA***********\n");
+    printf("*******MEJOR PUNTAJE DE LA PARTIDA: %d*******\n***********GANADORES DE LA PARTIDA***********\n", *puntMax);
+    recorrer_listas_iguales_paralelo(jug, rondas, accion_mostrar, puntMax, archInf, &colaGanadores);
+    printf("****************FIN DEL JUEGO****************");
+    printf("\n\nSe ha generado un informe de la partida en el archivo: '%s'\n", nom);
+
+    fprintf(archInf, "*********GANADORES DE LA PARTIDA***********\n");
+    while(!colaVacia(&colaGanadores))
+    {
+        sacarDeCola(&colaGanadores, buffer, MAX_NOM);
+        fprintf(archInf, "%s\n", buffer);
+    }
+    fprintf(archInf, "**************FIN DEL INFORME**************");
+
+    vaciarCola(&colaGanadores);
+    fclose(archInf);
+}
+
+//p: puntaje max, pf: ptr file
+//dato1 : nombre de lista de nombres, dato2: cola de la lista de colas
+void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc)
+{
+    char nom[MAX_NOM];
+    int round=1;
+    int total=0;
+    t_round ronda;
+    t_cola colaRounds = *(t_cola*)dato2;
+    FILE* arch = (FILE*)pf;
+
+    memcpy(nom, dato1, MAX_NOM);
+    fprintf(arch, "Nombre de jugador: %s\n", nom);
+
+    while(!colaVacia(&colaRounds))
+    {
+        sacarDeCola(&colaRounds, &ronda, sizeof(t_round));
+        fprintf(arch, "******************ROUND %d*******************\nSecuencia: %s\nRespuesta: %s\nVidas usadas: %d\nPuntos obtenidos: %d\n",
+                round, ronda.secuencia, ronda.respuesta, ronda.vidasUsadas, ronda.punt);
+        round++;
+        total+=ronda.punt;
+        free(ronda.secuencia);
+        free(ronda.respuesta);
+    }
+    if(*(int*)p == total)
+    {
+        printf("%s\n", nom);
+        ponerEnCola((t_cola*)pc, nom, MAX_NOM);
+    }
+    fprintf(arch, "\nPuntos totales obtenidos por %s: %d\n\n\n", nom, total);
+}
+

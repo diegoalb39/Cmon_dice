@@ -21,7 +21,7 @@
 #define NOM_ARCH_CONF "config.txt"
 
 #define TAM_SEC_INI 10
-#define MAX_NOM 31
+#define MAX_NOM 41
 #define CAMPOS_ARCH_CONF 4
 #define CANT_DIFS 3
 
@@ -72,5 +72,8 @@ void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos);
 //en el informe habra que utilizar free() sobre infoRound.secuencia y respuesta
 
 //generar archivo informe
+void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
+                               void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc));
+void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc);
 
 #endif // FUNCIONES_H_INCLUDED

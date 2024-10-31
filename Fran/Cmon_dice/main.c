@@ -15,7 +15,7 @@ int main()
 
     crearLista(&jugadores);
     crearLista(&infoRoundsPorJugador);
-    PlaySoundA("multimedia\\menu.wav",NULL,SND_LOOP | SND_ASYNC);
+//    PlaySoundA("multimedia\\menu.wav",NULL,SND_LOOP | SND_ASYNC);
     cantJres = ingresoJugadores(&jugadores);
     if(cantJres == ERROR_MEM)
         return 1;
@@ -30,7 +30,8 @@ int main()
     puntMax = jugar(&jugadores, &infoRoundsPorJugador, &conf, cantJres);
     system("cls");
     if(puntMax >=0)
-        printf("El puntaje maximo fue: %d", puntMax);
+        mostrar_y_generar_informe(&jugadores, &infoRoundsPorJugador, &puntMax, accion_mostrar);
+//        printf("El puntaje maximo fue: %d", puntMax);
     else
     {
         vaciarLista(&jugadores);
