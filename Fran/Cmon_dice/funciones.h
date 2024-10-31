@@ -9,17 +9,19 @@
 #include <locale.h>
 #include <windows.h>
 #include <process.h>
+#include <mmsystem.h>
 #include "colaDinamica/colaDinamica.h"
 #include "listaDinamica/listaDinamica.h"
 #include "curl/TP.h"
 
 #define esNivelValido(a)((a) == 'F' || (a) == 'M' || (a) == 'D')
 #define enRango(num,limInf,limSup)((num)>=(limInf) && (num)<=(limSup))
+#define cambiarColorFondo(c) ((c)=='A' ? system("color 17") : ((c)=='V' ? system("color 27") : ((c)=='R' ? system("color 47") : system("color 67"))))
 
 #define NOM_ARCH_CONF "config.txt"
 
 #define TAM_SEC_INI 10
-#define MAX_NOM 31
+#define MAX_NOM 41
 #define CAMPOS_ARCH_CONF 4
 #define CANT_DIFS 3
 
@@ -71,5 +73,8 @@ void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos);
 void liberarInfoRounds(t_lista* infoRoundsPorJugador);
 
 //generar archivo informe
+void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
+                               void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc));
+void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc);
 
 #endif // FUNCIONES_H_INCLUDED

@@ -287,3 +287,17 @@ int finIterador(t_lista_it* it) //indefinido si se utiliza antes de inicializar
 {
     return (it->cursor == NULL || it->cursor == it->ini);
 }
+
+//agregado
+void recorrer_listas_iguales_paralelo(t_lista* pl1, t_lista* pl2,
+                                    void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc),
+                                    void* p, void* pf, void* pc)
+{
+    while(*pl1 && *pl2)
+    {
+        accion((*pl1)->info, (*pl2)->info, p, pf, pc);
+
+        pl1 = &(*pl1)->sig;
+        pl2 = &(*pl2)->sig;
+    }
+}

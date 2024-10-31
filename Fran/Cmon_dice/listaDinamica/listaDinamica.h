@@ -51,4 +51,9 @@ int inicializarIterador(t_lista_it* it, t_lista* lista);
 int leerElemento(t_lista_it* it, void* dato, unsigned tam);
 void reiniciarCursor(t_lista_it* it);
 int finIterador(t_lista_it* it);
+
+//agregado
+void recorrer_listas_iguales_paralelo(t_lista* pl1, t_lista* pl2,
+                                    void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc),
+                                    void* p, void* pf, void* pc);
 #endif // LISTADINAMICA_H_INCLUDED
