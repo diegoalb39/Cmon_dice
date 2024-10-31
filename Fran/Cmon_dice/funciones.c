@@ -19,7 +19,7 @@ void mostrarConf(t_conf conf)
     printf("Nivel de dificultad: %c\n"
            "Tiempo que se mostrara la secuencia: %d segundos\n"
            "Tiempo maximo de respuesta: %d segundos\n"
-           "Cantidad de vidas disponibles: %d",
+           "Cantidad de vidas disponibles: %d\n",
            conf.nivel, conf.cantTiempoSec, conf.cantTiempoResp, conf.cantVidas);
 }
 void mostrarJugadores(t_lista* jugadores)
@@ -125,14 +125,14 @@ int leerConf(const char* archConf, t_conf* varConf)
            sscanf(cad, "%c|%d|%d|%d", &auxConf.nivel, &auxConf.cantTiempoSec, &auxConf.cantTiempoResp, &auxConf.cantVidas))
         {
             fclose(pf);
-            printf("Error en la lectura del archivo de configuración: formato invalido");
+            printf("Error en la lectura del archivo de configuración: formato invalido\n");
             return ERROR_ARCH;
         }
 
         if(!esNivelValido(auxConf.nivel) || !enRango(auxConf.cantTiempoSec,1,20) || !enRango(auxConf.cantTiempoResp,1,20) || !enRango(auxConf.cantVidas,0,5))
         {
             fclose(pf);
-            printf("Error en la lectura del archivo de configuración: formato invalido");
+            printf("Error en la lectura del archivo de configuración: formato invalido\n");
             return ERROR_ARCH;
         }
 
@@ -240,7 +240,7 @@ void timerResp(void* arg)
     if(tiempoResp==0 && continuarTimer)
     {
         system("cls");
-        printf("Se acabó el tiempo. Presione ENTER para continuar...");
+        printf("Se acabó el tiempo. Presione ENTER para continuar...\n");
     }
 }
 
@@ -344,7 +344,7 @@ int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* vidas)
     {
         system("cls");
         printf("Ronda %d\n\n"
-                "Ingrese su respuesta(una letra a la vez)\n\n"
+                "Ingrese su respuesta (una letra a la vez)\n\n"
                 "Respuesta: %s", ronda, infoRound->respuesta);
         fflush(stdin);
         scanf("%c", &auxChar);
@@ -443,12 +443,12 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
         crearCola(&infoRoundsJugador);
         secuencia.tamcontenido = 0;
         obtener_secuencia(&curl, &secuencia);
-        PlaySoundA(NULL, 0, 0);
         system("cls");
         printf("Turno del jugador %s", jugador);
         Sleep(2000);
 
         do{
+            PlaySoundA("multimedia\\gameplay.wav",NULL,SND_LOOP | SND_ASYNC);
             infoRound.vidasUsadas = 0;
             infoRound.secuencia = (char*)malloc(TAM_SEC_INI + 1);
             if(!infoRound.secuencia || (infoRound.respuesta = (char*)malloc(TAM_SEC_INI + 1)) == NULL)
@@ -506,7 +506,9 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
                     }
 
                 ronda++;
+                PlaySoundA(NULL, 0, 0);
                 PlaySoundA("multimedia\\next_round.wav",NULL,SND_ASYNC);
+                Sleep(500); //para que se escuche el next_round.wav
             }
             else
                 infoRound.punt = 0;
