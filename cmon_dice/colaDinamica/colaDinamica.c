@@ -30,22 +30,6 @@ int colaLlena(const t_cola* c, unsigned tamInfo)
     return TODO_OK;
 }
 
-/*int colaLlena(const t_cola* c, unsigned tamInfo)
-{
-    t_nodo* nue= (t_nodo*) malloc(sizeof(t_nodo));
-    void* info;
-
-    if(!nue || (info = malloc(tamInfo)) == NULL)
-    {
-        free(nue);
-        return NO_MEM;
-    }
-
-    free(nue);
-    free(info);
-
-    return TODO_OK;
-}*/
 int ponerEnCola(t_cola* c, const void* info, unsigned tamInfo)
 {
     t_nodo* nue= (t_nodo*) malloc(sizeof(t_nodo));

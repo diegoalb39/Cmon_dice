@@ -288,7 +288,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
     if(*pVidas == 0)
     {
         printf("No tiene mas vidas para utilizar\n\n");
-//        PlaySoundA("multimedia\\game_over.wav",NULL,SND_ASYNC);
+        PlaySoundA("multimedia\\game_over.wav",NULL,SND_ASYNC);
         system("pause");
         perdio = 1;
         return 0;
@@ -531,7 +531,6 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
     return puntMax;
 }
 
-//agregado
 void mostrar_y_generar_informe(t_lista* jug, t_lista* rondas, int* puntMax,
                                void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc))
 {

@@ -7,8 +7,6 @@ void crearLista(t_lista* pl)
 
 int insertarAlFinal(t_lista* pl, const void* dato, unsigned tam)
 {
-    //aca se podria reservar memoria para el nuevo nodo y guardar la direccion de la memoira reservada en una variable aux.
-
     while(*pl)
     {
         pl = &(*pl)->sig;
@@ -64,31 +62,6 @@ void recorrerLista(t_lista* pl, Accion accion)
     }
 }
 
-/*int sacarDeLista(t_lista* pl, void* clave, unsigned tam, Cmp funCmp, Accion accion)
-{
-    t_nodo* elim;
-    float total=0;
-
-    while(*pl)
-    {
-        if(funCmp((*pl)->info, clave)==0)
-        {
-            elim= *pl;
-            *pl= elim->sig;
-
-            //memcpy(clave, (*pl)->info, minimo((*pl)->tam, tam));
-            //accion
-            free(elim->info);
-            free(elim);
-        }
-
-         pl = &(*pl)->sig;
-    }
-
-
-    return  NO_ENCONTRADO;
-}
-*/
 int sacarDeListaOrd(t_lista* pl, void* clave, unsigned tam, Cmp funCmp)
 {
     t_nodo* elim;
@@ -266,7 +239,6 @@ int finIterador(t_lista_it* it) //indefinido si se utiliza antes de inicializar
     return (it->cursor == NULL || it->cursor == it->ini);
 }
 
-//agregado
 void recorrer_listas_iguales_paralelo(t_lista* pl1, t_lista* pl2,
                                     void(*accion)(void* dato1, void* dato2, void* p, void* pf, void* pc),
                                     void* p, void* pf, void* pc)
