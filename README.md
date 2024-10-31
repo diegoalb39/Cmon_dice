@@ -28,7 +28,7 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 	compiler: agregar ubicación a
 	“include"
 	En Codeblocks: Settings > Compiler > Search directories > Linker: agregar ubicación a “lib”
-Para las funciones multimedia debe colocar el archivo "WinMM.Lib" que se encuentra en la carpeta multimedia en:
+Para las funciones multimedia debe colocar el archivo "WinMM.Lib", que se encuentra en la carpeta multimedia, en:
 Settings > Compiler > Linker Settings.
 
 Compila el proyecto y ejecútalo.
@@ -61,12 +61,19 @@ que puede deshacer los últimos movimientos, según la cantidad de vidas
 que tenga.
 - Por cada round se van sumando puntos, y el jugador que obtenga la
 mayor cantidad de puntos es el ganador.
+- Si desea utilizar vidas porque se equivocó en el ingreso de una letra, podrá ingresar la letra "U" para utilizar vidas y deshacer los movimientos que desee según las vidas restantes.
 Los puntos de cada jugador de la siguiente manera:
 - Por cada secuencia bien ingresada, sin usar vida, se recibe +3 puntos
 - Por cada secuencia bien ingresada, pero usando vida, se recibe +1
 punto.
 
-Nota 1: Los niveles de dificultad son:
+
+Ganará la persona con mayor cantidad de puntos. En caso de que hayan 2
+personas con la mayor cantidad de puntos (ejemplo: Jugador 1 y jugador 3
+hicieron 10 puntos cada uno, mientras que el jugador 2 hizo 7 puntos),
+entonces el jugador 1 y 3 serán los ganadores.
+
+# Los niveles de dificultad
 - Fácil
 - Medio
 - Difícil
@@ -77,13 +84,6 @@ Ejemplo:
 Dificultad elegida: Media. Tiempo que se muestra la secuencia por pantalla: 5
 segundos. Cantidad de tiempo que tiene la persona para contestar: 10
 segundos. Cantidad de vidas: 1.
-
-Si desea utilizar vidas porque se equivocó en el ingreso de una letra, podrá ingresar la letra "U" para utilizar vidas y deshacer los movimientos que desee sgun las vidas restantes.
-
-Ganará la persona con mayor cantidad de puntos. En caso de que hayan 2
-personas con la mayor cantidad de puntos (ejemplo: Jugador 1 y jugador 3
-hicieron 10 puntos cada uno, mientras que el jugador 2 hizo 7 puntos),
-entonces el jugador 1 y 3 serán los ganadores.
 
 ## Construido con 🛠️
 
