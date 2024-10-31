@@ -92,7 +92,12 @@ Mucho esfuerzo y amor. Codigo en lenguaje C, libreria cURL para trabajar con la 
 (no quiero ser redundante especificando lenguaje y cURL otra vez, sino lo dejamos).
 
 ## Autores ✒️
-
+*Albornoz Diego
+*Cancian Facundo 
+*Churquina Diego 
+*Hidalgo Eduardo 
+*Parodi Francisco
+*Villalba Leandro
 
 ## Licencia 📄
 
