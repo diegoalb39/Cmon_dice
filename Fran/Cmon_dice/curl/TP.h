@@ -42,9 +42,6 @@ typedef struct
 
 }t_contenedor;
 
-//RECOMENDACION: Leer el "manual" dado por la API para mayor comprension de la manera en que se realizan los pedidos
-///////////////////y el retorno que se hace (link al final del PDF del TP)
-
 //size_t nombre_de_funcion(puntero a paquete enviado desde api, tamaño default de un elemento, tamaño del paquete recibido, variable de guardado)
 //size_t WriteCallback(void*, size_t, size_t, void*);
 //el size_t retornado es el tamaño total del paquete recibido
@@ -54,8 +51,5 @@ size_t solicitar_numeros(void*, size_t, size_t, void*);
 int armado_url(char**);
 void config_curl(CURL**, char*, t_contenedor*);
 int obtener_secuencia(CURL**, t_contenedor*);
-//int juego_princicipal();
-
-//int funcion_general(int);
 
 #endif // TP_H_INCLUDED

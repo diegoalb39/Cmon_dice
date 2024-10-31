@@ -19,7 +19,7 @@ void mostrarConf(t_conf conf)
     printf("Nivel de dificultad: %c\n"
            "Tiempo que se mostrara la secuencia: %d segundos\n"
            "Tiempo maximo de respuesta: %d segundos\n"
-           "Cantidad de vidas disponibles: %d",
+           "Cantidad de vidas disponibles: %d\n",
            conf.nivel, conf.cantTiempoSec, conf.cantTiempoResp, conf.cantVidas);
 }
 void mostrarJugadores(t_lista* jugadores)
@@ -62,7 +62,7 @@ int ingresoJugadores(t_lista* jugadores)
             return ERROR_MEM;
         if(ret == DUPLICADO)
         {
-            printf("El jugador %s ya había sido ingresado\n\n", jugador);
+            printf("El jugador %s ya habÃ­a sido ingresado\n\n", jugador);
             system("pause");
         }
         else
@@ -71,13 +71,13 @@ int ingresoJugadores(t_lista* jugadores)
         do{
             system("cls");
             mostrarJugadores(jugadores);
-            printf("¿Desea ingresar otro jugador? [Y/N]\n");
+            printf("Â¿Desea ingresar otro jugador? [Y/N]\n");
             fflush(stdin);
             scanf("%c", &opc);
             opc = toupper(opc);
             if(opc != 'Y' && opc != 'N')
             {
-                printf("\nOpción inválida\n\n");
+                printf("\nOpciÃ³n invÃ¡lida\n\n");
                 system("pause");
             }
         }while(opc != 'Y' && opc != 'N');
@@ -91,6 +91,7 @@ int ingresoJugadores(t_lista* jugadores)
 int leerConf(const char* archConf, t_conf* varConf)
 {
     char *auxChar, cad[11];
+    int cantRegistros = 0;
     t_conf auxConf;
     FILE* pf= fopen(archConf, "rt");
     if(!pf)
@@ -107,16 +108,16 @@ int leerConf(const char* archConf, t_conf* varConf)
         varConf->nivel = toupper(varConf->nivel);
         if(varConf->nivel != 'F' && varConf->nivel != 'M' && varConf->nivel != 'D')
         {
-            printf("\n\nLa opción elegida no es valida");
+            printf("\n\nLa opciÃ³n elegida no es valida");
             system("pause");
             system("cls");
         }
     }while(varConf->nivel != 'F' && varConf->nivel != 'M' && varConf->nivel != 'D');
 
     system("cls");
-    auxConf.cantTiempoResp = 0; //para verificar que no esta vacio
     while(fgets(cad, sizeof(cad), pf))
     {
+        cantRegistros++;
         auxChar= strchr(cad, '\n');
         if(auxChar)
             *auxChar= '\0';
@@ -125,14 +126,14 @@ int leerConf(const char* archConf, t_conf* varConf)
            sscanf(cad, "%c|%d|%d|%d", &auxConf.nivel, &auxConf.cantTiempoSec, &auxConf.cantTiempoResp, &auxConf.cantVidas))
         {
             fclose(pf);
-            printf("Error en la lectura del archivo de configuración: formato invalido");
+            printf("Error en la lectura del archivo de configuraciÃ³n: formato invalido\n");
             return ERROR_ARCH;
         }
 
         if(!esNivelValido(auxConf.nivel) || !enRango(auxConf.cantTiempoSec,1,20) || !enRango(auxConf.cantTiempoResp,1,20) || !enRango(auxConf.cantVidas,0,5))
         {
             fclose(pf);
-            printf("Error en la lectura del archivo de configuración: formato invalido");
+            printf("Error en la lectura del archivo de configuraciÃ³n: formato invalido\n");
             return ERROR_ARCH;
         }
 
@@ -141,8 +142,11 @@ int leerConf(const char* archConf, t_conf* varConf)
     }
 
     fclose(pf);
-    if(auxConf.cantTiempoResp == 0)
+    if(cantRegistros != CANT_DIFS)
+    {
+        printf("Error en la lectura del archivo de configuraciÃ³n: formato invalido");
         return ERROR_ARCH;
+    }
     else
         return TODO_OK;
 }
@@ -153,8 +157,8 @@ char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
 
     do{
         mostrarJugadores(jugadores);
-        printf("Se jugará según el orden de la lista de jugadores\n");
-        printf("\nLa configuración seleccionada para la partida fue la siguiente:\n\n");
+        printf("Se jugarÃ¡ segÃºn el orden de la lista de jugadores\n");
+        printf("\nLa configuraciÃ³n seleccionada para la partida fue la siguiente:\n\n");
         mostrarConf(*conf);
         printf("\n\nTeclas para jugar:\n\n"
                "A - AZUL\n"
@@ -162,13 +166,13 @@ char mostrarInfoPartida(t_lista* jugadores, t_conf* conf)
                "R - ROJO\n"
                "N - NARANJA\n"
                "U - USAR VIDAS");
-        printf("\n\n¿Está listo para comenzar la partida? [Y/N]\n");
+        printf("\n\nÂ¿EstÃ¡ listo para comenzar la partida? [Y/N]\n");
         fflush(stdin);
         scanf("%c", &resp);
         resp = toupper(resp);
         if(resp != 'Y' && resp != 'N')
         {
-            printf("\nOpción inválida\n\n");
+            printf("\nOpciÃ³n invÃ¡lida\n\n");
             system("pause");
             system("cls");
         }
@@ -188,7 +192,7 @@ int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int *cantJres)
     {
         system("cls");
         do{
-            printf("¿Que acción desea realizar antes de comenzar?\n\n"
+            printf("Â¿Que acciÃ³n desea realizar antes de comenzar?\n\n"
                    "1 - Agregar jugadores\n"
                    "2 - Cambiar la dificultad\n"
                    "3 - Comenzar\n"
@@ -197,7 +201,7 @@ int wrapper_mostrarInfoPartida(t_lista* jugadores, t_conf* conf, int *cantJres)
             scanf("%d", &opc);
             if(opc<1 || opc>4)
             {
-                printf("\nOpción inválida\n\n");
+                printf("\nOpciÃ³n invÃ¡lida\n\n");
                 system("pause");
                 system("cls");
             }
@@ -240,7 +244,7 @@ void timerResp(void* arg)
     if(tiempoResp==0 && continuarTimer)
     {
         system("cls");
-        printf("Se acabó el tiempo. Presione ENTER para continuar...");
+        printf("Se acabÃ³ el tiempo. Presione ENTER para continuar...\n");
     }
 }
 
@@ -294,7 +298,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
     do{
         printf("Ronda %d\n\n"
                 "Respuesta actual: %s\n\n"
-                "¿Cuantas vidas desea utilizar? Vidas disponibles: %d\n\n"
+                "Â¿Cuantas vidas desea utilizar? Vidas disponibles: %d\n\n"
                 "\rPuede utilizar %d vidas para volver a mostrar la secuencia.\n\n", ronda, respuesta, *pVidas, largoResp + 1);
 
         fflush(stdin);
@@ -303,7 +307,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
         {
             printf("\b\033[1A");
             printf("\033[2K");
-            printf("La cantidad de vidas solicitada no es válida\n\n");
+            printf("La cantidad de vidas solicitada no es vÃ¡lida\n\n");
             system("pause");
             system("cls");
         }
@@ -344,7 +348,7 @@ int recibirRespuesta(t_round* infoRound, t_conf* conf, int ronda, int* vidas)
     {
         system("cls");
         printf("Ronda %d\n\n"
-                "Ingrese su respuesta(una letra a la vez)\n\n"
+                "Ingrese su respuesta (una letra a la vez)\n\n"
                 "Respuesta: %s", ronda, infoRound->respuesta);
         fflush(stdin);
         scanf("%c", &auxChar);
@@ -443,12 +447,12 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
         crearCola(&infoRoundsJugador);
         secuencia.tamcontenido = 0;
         obtener_secuencia(&curl, &secuencia);
-//        PlaySoundA(NULL, 0, 0);
         system("cls");
         printf("Turno del jugador %s", jugador);
         Sleep(2000);
 
         do{
+            PlaySoundA("multimedia\\gameplay.wav",NULL,SND_LOOP | SND_ASYNC);
             infoRound.vidasUsadas = 0;
             infoRound.secuencia = (char*)malloc(TAM_SEC_INI + 1);
             if(!infoRound.secuencia || (infoRound.respuesta = (char*)malloc(TAM_SEC_INI + 1)) == NULL)
@@ -506,7 +510,9 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
                     }
 
                 ronda++;
-//                PlaySoundA("multimedia\\next_round.wav",NULL,SND_ASYNC);
+                PlaySoundA(NULL, 0, 0);
+                PlaySoundA("multimedia\\next_round.wav",NULL,SND_ASYNC);
+                Sleep(500); //para que se escuche el next_round.wav
             }
             else
                 infoRound.punt = 0;

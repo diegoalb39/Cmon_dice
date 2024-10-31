@@ -9,10 +9,10 @@
 #include <locale.h>
 #include <windows.h>
 #include <process.h>
+#include <mmsystem.h>
 #include "colaDinamica/colaDinamica.h"
 #include "listaDinamica/listaDinamica.h"
 #include "curl/TP.h"
-#include <mmsystem.h>
 
 #define esNivelValido(a)((a) == 'F' || (a) == 'M' || (a) == 'D')
 #define enRango(num,limInf,limSup)((num)>=(limInf) && (num)<=(limSup))
@@ -23,6 +23,7 @@
 #define TAM_SEC_INI 10
 #define MAX_NOM 41
 #define CAMPOS_ARCH_CONF 4
+#define CANT_DIFS 3
 
 #define ERROR_ARCH -1
 #define ERROR_MEM -1
