@@ -33,6 +33,7 @@
 #define ERROR_THREAD -4
 #define ERROR_ARCH_FORMAT -5
 
+#define TODO_OK 0
 #define SALIR 1
 #define RESP_COMPLETA 1
 #define RESP_NO_COMP 2

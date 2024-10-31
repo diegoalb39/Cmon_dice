@@ -12,13 +12,14 @@ int main()
     setlocale(LC_ALL, "spanish");
     SetConsoleCP(1252);
     SetConsoleOutputCP(1252);
+
     if(menuInicial(MSJ_MENU_INICIAL) != SALIR){
         system("cls");
         crearLista(&jugadores);
         crearLista(&infoRoundsPorJugador);
         PlaySoundA("multimedia\\menu.wav",NULL,SND_LOOP | SND_ASYNC);
         cantJres = ingresoJugadores(&jugadores);
-        if(cantJres != TODO_OK)
+        if(cantJres == ERROR_MEM)
         {
             mostrarError(cantJres);
             vaciarLista(&jugadores);
@@ -36,7 +37,7 @@ int main()
         }
         desordenarLista(&jugadores, cantJres);
         ret = wrapper_mostrarInfoPartida(&jugadores, &conf, &cantJres);
-        if(ret != TODO_OK)
+        if(ret != TODO_OK && ret != SALIR)
         {
             mostrarError(ret);
             vaciarLista(&jugadores);
@@ -52,6 +53,7 @@ int main()
             return puntMax;
         }
 
+        system("cls");
         ret = mostrar_y_generar_informe(&jugadores, &infoRoundsPorJugador, &puntMax, accion_mostrar);
         if(ret != TODO_OK)
         {
@@ -62,7 +64,7 @@ int main()
         }
 
         vaciarLista(&jugadores);
-        liberarInfoRounds(&infoRoundsPorJugador);
     }
+
     return 0;
 }

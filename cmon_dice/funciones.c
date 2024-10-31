@@ -290,6 +290,7 @@ void mostrarSecuencia(char const* secuencia, int cantTiempoSec)
     }
 
     Sleep((cantTiempoSec-1)*1000);
+    system("color 07");
     system("cls");
 }
 
@@ -549,6 +550,7 @@ void liberarInfoRounds(t_lista* infoRoundsPorJugador)
 {
     t_cola infoRoundsJugador;
     t_round auxRound;
+
     while(sacarPrimeroDeLista(infoRoundsPorJugador, &infoRoundsJugador, sizeof(t_cola)) != LISTA_VACIA)
     {
         while(sacarDeCola(&infoRoundsJugador, &auxRound, sizeof(t_round)) != COLA_VACIA)
@@ -629,13 +631,13 @@ void accion_mostrar(void* dato1, void* dato2, void* p, void* pf, void* pc)
         printf("%s\n", nom);
         ponerEnCola((t_cola*)pc, nom, MAX_NOM);
     }
-    else
-        printf("NO HAY GANADORES!\n");
+
     fprintf(arch, "\nPuntos totales obtenidos por %s: %d\n\n\n", nom, total);
 }
 
 void mostrarError(int cod)
 {
+    system("cls");
     printf("Error: ");
     switch(cod)
     {

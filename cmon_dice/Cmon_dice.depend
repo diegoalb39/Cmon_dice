@@ -172,10 +172,20 @@
 	<string.h>
 	<windows.h>
 
-1730356304 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\funciones.c
+1730354259 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\listadinamica\listadinamica.c
+	"listaDinamica.h"
+
+1730354251 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\listadinamica\listadinamica.h
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	<time.h>
+	"../nodo.h"
+
+1730363208 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\funciones.c
 	"funciones.h"
 
-1730356454 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\funciones.h
+1730357987 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\funciones.h
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -189,16 +199,6 @@
 	"listaDinamica/listaDinamica.h"
 	"curl/TP.h"
 
-1730354251 c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\listadinamica\listadinamica.h
-	<stdio.h>
-	<stdlib.h>
-	<memory.h>
-	<time.h>
-	"../nodo.h"
-
-1730354259 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\listadinamica\listadinamica.c
-	"listaDinamica.h"
-
-1730356316 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\main.c
+1730363208 source:c:\users\parof\documents\documentos varios\universidad\materias\algoritmos y estructuras de datos\trabajo practico\cmon_dice\cmon_dice\main.c
 	"funciones.h"
 
