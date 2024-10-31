@@ -89,6 +89,23 @@ void recorrerLista(t_lista* pl, Accion accion)
     return  NO_ENCONTRADO;
 }
 */
+
+int sacarPrimeroDeLista(t_lista* pl, void* dato, unsigned tam)
+{
+    t_nodo* elim;
+
+    if(!(*pl))
+        return LISTA_VACIA;
+
+    elim = *pl;
+    memcpy(dato, elim->info, minimo(tam, elim->tam));
+    *pl = elim->sig;
+
+    free(elim->info);
+    free(elim);
+
+    return TODO_OK;
+}
 int sacarDeListaOrd(t_lista* pl, void* clave, unsigned tam, Cmp funCmp)
 {
     t_nodo* elim;
@@ -158,6 +175,11 @@ void vaciarLista(t_lista* pl)
         free(elim->info);
         free(elim);
     }
+}
+
+int listaVacia(t_lista* pl)
+{
+    return *pl == NULL;
 }
 
 //PRIMITIVAS PARA DESORDENAR

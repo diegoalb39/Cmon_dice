@@ -68,6 +68,7 @@ int usarVidas(int* pVidas, char* secuencia, char* respuesta, int cantTiempoSec, 
 int extenderSecuencia(t_round* infoRound, t_contenedor* secuencia, CURL** curl);
 void limpiezaCurl(CURL** curl, char *URL, char *cadena_datos);
 //en el informe habra que utilizar free() sobre infoRound.secuencia y respuesta
+void liberarInfoRounds(t_lista* infoRoundsPorJugador);
 
 //generar archivo informe
 

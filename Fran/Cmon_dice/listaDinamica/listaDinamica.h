@@ -33,9 +33,11 @@ void crearLista(t_lista* pl);
 int insertarAlFinal(t_lista* pl, const void* dato, unsigned tam);
 int insertarOrdenado(t_lista* pl, const void* dato, unsigned tam, Cmp funCmp, int sinDup);
 int sacarDeLista(t_lista* pl,void* clave, unsigned tam, Cmp funCmp, Accion accion);
+int sacarPrimeroDeLista(t_lista* pl, void* dato, unsigned tam);
 int sacarDeListaOrd(t_lista* pl, void* clave, unsigned tam, Cmp funCmp);
 void recorrerLista(t_lista* pl, Accion accion);
 int ordenarLista(t_lista* pl, Cmp funCmp);
+int listaVacia(t_lista* pl);
 void vaciarLista(t_lista* pl);
 
 //PRIMITIVAS PARA DESORDENAR

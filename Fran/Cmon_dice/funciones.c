@@ -525,3 +525,18 @@ int jugar(t_lista* jugadores, t_lista* infoRoundsPorJugador, t_conf* conf, int c
 
     return puntMax;
 }
+
+void liberarInfoRounds(t_lista* infoRoundsPorJugador)
+{
+    t_cola infoRoundsJugador;
+    t_round auxRound;
+
+    while(sacarPrimeroDeLista(infoRoundsPorJugador, &infoRoundsJugador, sizeof(t_cola)) != LISTA_VACIA)
+    {
+        while(sacarDeCola(&infoRoundsJugador, &auxRound, sizeof(t_round)) != COLA_VACIA)
+        {
+            free(auxRound.secuencia);
+            free(auxRound.respuesta);
+        }
+    }
+}
